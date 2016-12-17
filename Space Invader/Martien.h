@@ -3,7 +3,7 @@
 
 #include "ExtraTerrestre.h"
 
-class Martien : public ExtraTerrestre
+class Martien : public ExtraTerrestre // C"est quoi??
 {
 	bool jiggle;
 
