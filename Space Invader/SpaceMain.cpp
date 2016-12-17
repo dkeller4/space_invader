@@ -1,5 +1,7 @@
 #include <iostream>
 #include "UIKit.h"
+#include "ExtraTerrestre.h"
+
 #define LARGUER_FENETRE 150
 #define HAUTEUR_FENETRE 70
 
@@ -21,8 +23,12 @@ int main()
 {
 	UIKit::setDimensionFenetre(0, 0, LARGUER_FENETRE, HAUTEUR_FENETRE);
 	AxesXetY();
+	
+	UIKit::cadre(5, 5, 140, 15, FOREGROUND_RED);
 
-	UIKit::cadre(10, 10, 20, 20, FOREGROUND_BLUE);
+
+	ExtraTerrestre::dessinerLigneExtraterrestres(10);
+
 
 	return 0;
 }
