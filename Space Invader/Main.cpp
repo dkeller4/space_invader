@@ -1,5 +1,7 @@
+#include "AfficheJeu.h"
+
 int main()
 {
-	//  test
+	jouer();
 	return 0;
 }
