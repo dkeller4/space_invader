@@ -5,6 +5,8 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include "ExtraTerrestre.h"
+#include "miniMartien.h"
 using namespace std;
 
 // Methodes privées
@@ -39,8 +41,14 @@ void Jeu::startGame() {
 	finDeJeu = false;
 	afficherTerrain();
 
-	// pour faire aparaitre le vaissau
+	// pour faire apparaitre le vaissau
 	sangomar.modifierPosition(75);
+
+	// Dessiner les extraterrestres par ligne
+	miniMartien* monstresLigne1 = dessinerLigneExtraterrestres(5, 10);
+	miniMartien* monstresLigne2 = dessinerLigneExtraterrestres(10, 15);
+	miniMartien* monstresLigne2 = dessinerLigneExtraterrestres(7, 20);
+	
 
 	sangomar.tirerLaser();
 	
@@ -114,7 +122,7 @@ void Jeu::afficherTerrain() const {
 	// Cache le curseur
 	ecran.curseurVisible(false);
 
-	// Initialise les dimansions de la fenetre
+	// Initialise les dimensions de la fenetre
 	ecran.setDimensionFenetre(0, 0, nbColonnesTerrain + 30, nbLignesTerrain + 30);
 
 	// Creer le cadre du terrain de jeu
@@ -123,7 +131,6 @@ void Jeu::afficherTerrain() const {
 	// Creer le cadre info jeu (type extraterrstres + scores)
 	ecran.cadre(nbColonnesTerrain + 1, 0, nbColonnesTerrain + 1 + 25, 15, FOREGROUND_RED);
 
-	
 	
 	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 2, 5);

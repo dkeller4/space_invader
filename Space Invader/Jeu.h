@@ -3,6 +3,7 @@
 #include "MonVaissau.h"
 #include "Menu.h"
 #include "UIKit.h"
+#include "ExtraTerrestre.h"
 
 #define FOREGROUND_MAGENTA 0x0005
 #define FOREGROUND_CYAN 0x0003

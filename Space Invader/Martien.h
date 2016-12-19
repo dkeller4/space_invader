@@ -3,13 +3,16 @@
 
 #include "ExtraTerrestre.h"
 
-class Martien : public ExtraTerrestre // C"est quoi??
+class Martien : public ExtraTerrestre
 {
 	bool jiggle;
 
 public:
 	Martien(int,int);
 	void jiggleMartien();
+
+
+	
 };
 
 #endif

@@ -51,6 +51,12 @@
     <ClCompile Include="Vaisseau.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Martien.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="miniMartien.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AfficheJeu.h">
@@ -84,6 +90,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vaisseau.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Martien.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="miniMartien.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

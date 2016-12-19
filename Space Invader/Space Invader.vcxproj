@@ -25,12 +25,14 @@
     <ClCompile Include="Jeu.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Martien.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MonVaissau.cpp" />
     <ClCompile Include="nvoLaser.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="UIKit.cpp" />
     <ClCompile Include="Vaisseau.cpp" />
+    <ClCompile Include="miniMartien.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AfficheJeu.h" />
@@ -38,12 +40,14 @@
     <ClInclude Include="ExtraTerrestre.h" />
     <ClInclude Include="Jeu.h" />
     <ClInclude Include="Laser.h" />
+    <ClInclude Include="Martien.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MonVaissau.h" />
     <ClInclude Include="nvoLaser.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="UIKit.h" />
     <ClInclude Include="Vaisseau.h" />
+    <ClInclude Include="miniMartien.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3679EFC3-7CAA-4703-8441-893DC4072CD7}</ProjectGuid>

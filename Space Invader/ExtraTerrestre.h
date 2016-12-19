@@ -3,9 +3,6 @@
 
 #include "Coord.h"
 
-enum typeExtraTerrestre {
-	rouge, bleu
-};
 
 class ExtraTerrestre
 {
@@ -18,7 +15,7 @@ public:
 	Coord coord;
 	bool isAlive;
 
-	ExtraTerrestre(int, int);
+	ExtraTerrestre(int type, int valeur);
 	static void reduireNombreExtraTerrestre();
 	static int getNombreExtraTerrestre();
 	static void resetNombreExtraTerrestre();
@@ -26,9 +23,8 @@ public:
 	void putExtraTerrestre() const;
 	int ajouterPoints() const;
 	void resetExtraTerrestre();
-	ExtraTerrestre();
-	void dessinerExtraTerrestre(int x, int y);
-	static void dessinerLigneExtraterrestres(const int nombre_extraterrestres);
+
+
 };
 
 #endif

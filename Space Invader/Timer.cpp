@@ -4,7 +4,7 @@
 
 //	constructeur
 Timer::Timer() {
-	delai = 100;
+	delai = 10;
 	date = clock();
 }
 
