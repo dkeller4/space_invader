@@ -11,7 +11,7 @@ protected:
 
 public:
 	Coord coord;
-	Vaisseau();		
+	Vaisseau();
 	void modifierPosition(char);
 };
 

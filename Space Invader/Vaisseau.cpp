@@ -4,14 +4,14 @@
 using namespace std;
 
 void Vaisseau::removeVaisseau() const
-{	
-	coord.gotoXY(coord.getPositionX(),coord.getPositionY());
+{
+	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
 	cout << " ";
 }
 
 void Vaisseau::putVaisseau() const
 {
-	coord.gotoXY(coord.getPositionX(),coord.getPositionY());
+	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
 	cout << char(18);
 }
 
@@ -23,21 +23,12 @@ Vaisseau::Vaisseau()
 }
 
 void Vaisseau::modifierPosition(char key)
-{	
+{
 	removeVaisseau();
-	switch(key)
+	switch (key)
 	{
-		case 'k' :	coord.setPositionX(coord.getPositionX()-1);	break;
-		case 'l' :	coord.setPositionX(coord.getPositionX()+1);
+	case 'k':	coord.setPositionX(coord.getPositionX() - 1);	break;
+	case 'l':	coord.setPositionX(coord.getPositionX() + 1);
 	}
 	putVaisseau();
 }
-
-
-
-
-
-
-
-
-

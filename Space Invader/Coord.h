@@ -5,8 +5,8 @@ class Coord
 {
 	int posX;
 	int posY;
-	
-public:			
+
+public:
 	Coord();
 	int getPositionX() const;
 	int getPositionY() const;

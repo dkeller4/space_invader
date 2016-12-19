@@ -14,7 +14,7 @@ public:
 	Coord coord;
 	bool isAlive;
 
-	ExtraTerrestre(int,int);
+	ExtraTerrestre(int, int);
 	static void reduireNombreExtraTerrestre();
 	static int getNombreExtraTerrestre();
 	static void resetNombreExtraTerrestre();

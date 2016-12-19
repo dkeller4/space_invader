@@ -15,19 +15,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AfficheJeu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Coord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ExtraTerrestre.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Jeu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Laser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Martien.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpaceMain.cpp">
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MonVaissau.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nvoLaser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UIKit.cpp">
@@ -38,16 +53,31 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AfficheJeu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Coord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ExtraTerrestre.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Jeu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Laser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Martien.h">
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MonVaissau.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nvoLaser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UIKit.h">

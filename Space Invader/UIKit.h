@@ -43,7 +43,7 @@ public:
 	static void setDimensionFenetre(int x1, int y1, int x2, int y2);
 
 	//dessiner un cadre
-	static void cadre(int cd,int ld,int cf,int lf, int couleur);
+	static void cadre(int cd, int ld, int cf, int lf, int couleur);
 
 	static int whereX();
 	static int whereY();

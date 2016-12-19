@@ -12,23 +12,23 @@ void Laser::startLaser(int x)
 }
 
 void Laser::removeLaser() const
-{	
-	coord.gotoXY(coord.getPositionX(),coord.getPositionY());
+{
+	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
 	cout << " ";
 }
 
 void Laser::putLaser() const
-{	
-	coord.gotoXY(coord.getPositionX(),coord.getPositionY());
-	cout << char(15);		
+{
+	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
+	cout << char(15);
 }
 
 void Laser::moveLaser()
-{	
+{
 	removeLaser();
 	if (coord.getPositionY()>0)
 	{
-		coord.setPositionY(coord.getPositionY()-1);
+		coord.setPositionY(coord.getPositionY() - 1);
 		putLaser();
 	}
 	else

@@ -5,10 +5,10 @@ using namespace std;
 
 int ExtraTerrestre::nombreExtraTerrestre = 0;
 
-ExtraTerrestre::ExtraTerrestre(int type,int valeur)
+ExtraTerrestre::ExtraTerrestre(int type, int valeur)
 {
-	typeExtraTerrestre=type;
-	valeurExtraTerrestre=valeur;
+	typeExtraTerrestre = type;
+	valeurExtraTerrestre = valeur;
 }
 
 void ExtraTerrestre::reduireNombreExtraTerrestre()
@@ -23,18 +23,18 @@ int ExtraTerrestre::getNombreExtraTerrestre()
 
 void ExtraTerrestre::resetNombreExtraTerrestre()
 {
-	nombreExtraTerrestre=0;
+	nombreExtraTerrestre = 0;
 }
 
 void ExtraTerrestre::removeExtraTerrestre() const
 {
-	coord.gotoXY(coord.getPositionX(),coord.getPositionY());
-	cout << " ";	
+	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
+	cout << " ";
 }
 
 void ExtraTerrestre::putExtraTerrestre() const
 {
-	coord.gotoXY(coord.getPositionX(),coord.getPositionY());
+	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
 	cout << char(typeExtraTerrestre);
 }
 
@@ -45,9 +45,8 @@ int ExtraTerrestre::ajouterPoints() const
 
 void ExtraTerrestre::resetExtraTerrestre()
 {
-	coord.setPositionX(rand()%40+1);
-	coord.setPositionY(rand()%20+1);
+	coord.setPositionX(rand() % 40 + 1);
+	coord.setPositionY(rand() % 20 + 1);
 	isAlive = true;
 	nombreExtraTerrestre++;
 }
-

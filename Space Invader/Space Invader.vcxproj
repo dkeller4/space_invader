@@ -18,6 +18,33 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AfficheJeu.cpp" />
+    <ClCompile Include="Coord.cpp" />
+    <ClCompile Include="ExtraTerrestre.cpp" />
+    <ClCompile Include="Jeu.cpp" />
+    <ClCompile Include="Laser.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MonVaissau.cpp" />
+    <ClCompile Include="nvoLaser.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="UIKit.cpp" />
+    <ClCompile Include="Vaisseau.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AfficheJeu.h" />
+    <ClInclude Include="Coord.h" />
+    <ClInclude Include="ExtraTerrestre.h" />
+    <ClInclude Include="Jeu.h" />
+    <ClInclude Include="Laser.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="MonVaissau.h" />
+    <ClInclude Include="nvoLaser.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="UIKit.h" />
+    <ClInclude Include="Vaisseau.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3679EFC3-7CAA-4703-8441-893DC4072CD7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -145,23 +172,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Coord.cpp" />
-    <ClCompile Include="ExtraTerrestre.cpp" />
-    <ClCompile Include="Laser.cpp" />
-    <ClCompile Include="Martien.cpp" />
-    <ClCompile Include="SpaceMain.cpp" />
-    <ClCompile Include="UIKit.cpp" />
-    <ClCompile Include="Vaisseau.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Coord.h" />
-    <ClInclude Include="ExtraTerrestre.h" />
-    <ClInclude Include="Laser.h" />
-    <ClInclude Include="Martien.h" />
-    <ClInclude Include="UIKit.h" />
-    <ClInclude Include="Vaisseau.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

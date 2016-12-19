@@ -5,8 +5,8 @@ using namespace std;
 
 Coord::Coord()
 {
-	posX=0;
-	posY=0;
+	posX = 0;
+	posY = 0;
 }
 
 int Coord::getPositionX() const
@@ -21,18 +21,18 @@ int Coord::getPositionY() const
 
 void Coord::setPositionX(int x)
 {
-	posX=x;
+	posX = x;
 }
 
 void Coord::setPositionY(int y)
 {
-	posY=y;
+	posY = y;
 }
 
 void Coord::gotoXY(int x, int y)
 {
 	cout.flush();
-	COORD coord;   
+	COORD coord;
 	coord.X = x;
 	coord.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
