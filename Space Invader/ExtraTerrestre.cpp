@@ -1,15 +1,17 @@
 #include "ExtraTerrestre.h"
 #include <stdlib.h>
-#include<iostream>
+#include <iostream>
+#include "UIKit.h"
 using namespace std;
 
 int ExtraTerrestre::nombreExtraTerrestre = 0;
 
-ExtraTerrestre::ExtraTerrestre(int type, int valeur)
+ExtraTerrestre::ExtraTerrestre(int type,int valeur)
 {
 	typeExtraTerrestre = type;
 	valeurExtraTerrestre = valeur;
 }
+
 
 void ExtraTerrestre::reduireNombreExtraTerrestre()
 {
@@ -29,7 +31,7 @@ void ExtraTerrestre::resetNombreExtraTerrestre()
 void ExtraTerrestre::removeExtraTerrestre() const
 {
 	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
-	cout << " ";
+	cout << " ";	
 }
 
 void ExtraTerrestre::putExtraTerrestre() const
@@ -50,3 +52,4 @@ void ExtraTerrestre::resetExtraTerrestre()
 	isAlive = true;
 	nombreExtraTerrestre++;
 }
+
