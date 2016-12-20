@@ -57,9 +57,6 @@
     <ClCompile Include="MonVaisseau.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Son.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AfficheJeu.h">
@@ -101,5 +98,10 @@
     <ClInclude Include="MonVaisseau.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="laser.wav">
+      <Filter>Source Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

@@ -7,6 +7,7 @@
 
 #include <Windows.h>
 #include <conio.h>
+#include <mmsystem.h>
 
 #include <iostream>
 #include <string>
@@ -47,11 +48,14 @@ nvoLaser* MonVaisseau::getTabLasers() {
 }
 
 void MonVaisseau::tirerSingleLaser() {
+	
+
 	gestionLaser(0, MAX_LASERS, 2);
 }
 
 // Methodes public
 void MonVaisseau::tirerDoubleLaser() {
+
 	gestionLaser(0, MAX_DOUBLE_LASERS / 2, 0);
 	gestionLaser(MAX_DOUBLE_LASERS / 2, MAX_DOUBLE_LASERS, 4);
 }
@@ -73,12 +77,22 @@ void MonVaisseau::tirerLaser() {
 
 		//	gestion d'un nouveau tir de laser
 		if (touche == ' ') {
+
 			// laser simple
 			tirerSingleLaser();
+			
+			
+			// Jouer 1x le son laser.wav
+			PlaySound(TEXT("laser.wav"), NULL, SND_SYNC);
 		}
 		else if (touche == 'd' || touche == 'D') {
 			// double lasers
 			tirerDoubleLaser();
+			
+			
+			// Jouer 2x le son laser.wav
+			PlaySound(TEXT("laser.wav"), NULL, SND_SYNC);
+			PlaySound(TEXT("laser.wav"), NULL, SND_SYNC);
 		}
 	}
 

@@ -35,7 +35,7 @@ void Jeu::startGame() {
 	miniMartien * aliensLigne1 = apparitionExraTerrestres(10);
 	miniMartien * aliensLigne2 = apparitionExraTerrestres(20);
 
-	
+
 	
 	do {
 		//	le vaissau tire

@@ -29,7 +29,6 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MonVaisseau.cpp" />
     <ClCompile Include="nvoLaser.cpp" />
-    <ClCompile Include="Son.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="UIKit.cpp" />
     <ClCompile Include="Vaisseau.cpp" />
@@ -49,6 +48,9 @@
     <ClInclude Include="UIKit.h" />
     <ClInclude Include="Vaisseau.h" />
     <ClInclude Include="miniMartien.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="laser.wav" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3679EFC3-7CAA-4703-8441-893DC4072CD7}</ProjectGuid>
@@ -139,6 +141,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
