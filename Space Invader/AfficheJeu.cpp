@@ -21,8 +21,6 @@ void jouer() {
 		// Cache le curseur
 		ecran.curseurVisible(false);
 
-		spaceInvader.afficherTitreJeu();
-
 		UIKit::color(FOREGROUND_WHITE + FOREGROUND_INTENSITY);
 		choixMenu = MenuDuJeu.afficherMenu();
 
