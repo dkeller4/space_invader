@@ -37,7 +37,7 @@ MonVaisseau::MonVaisseau() {
 	// affichage du vaissau
 	leVaissau = "(^_^)";
 	putVaisseau();
-	//	iniitialisation des lasers
+	//	initialisation des lasers
 	for (int i = 0; i < MAX_LASERS; i++)
 		tabLasers[i].isAlive = false;
 }

@@ -4,6 +4,7 @@
 #include "Menu.h"
 #include "UIKit.h"
 #include "ExtraTerrestre.h"
+#include "miniMartien.h"
 
 #define FOREGROUND_MAGENTA 0x0005
 #define FOREGROUND_CYAN 0x0003
@@ -31,7 +32,7 @@ public:
 	void startGame();
 	void resetGame();
 	void testCollision();
-	void apparitionExraTerrestres();
+	miniMartien* apparitionExraTerrestres(int y);
 	void afficherTerrain() const;
 	void afficherGameOver();
 	void afficherVictoire();

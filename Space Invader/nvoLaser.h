@@ -8,10 +8,10 @@ private:
 
 public:
 
-	//constructeur avec parametre
+	//constructeur avec parametres
 	nvoLaser(int direction);
 
-	//constructeur sana parametre
+	//constructeur sans parametres
 	nvoLaser();
 
 	//méthodes spécifiques

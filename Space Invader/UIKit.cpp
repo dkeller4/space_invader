@@ -1,4 +1,3 @@
-//	Version au 15/01/2015
 #include "UIKit.h"
 #define VERSION_CPP 15012015
 

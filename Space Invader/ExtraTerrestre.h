@@ -1,6 +1,5 @@
 #ifndef EXTRATERRESTRE_H
 #define EXTRATERRESTRE_H
-
 #include "Coord.h"
 
 

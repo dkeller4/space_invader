@@ -4,8 +4,15 @@
 class miniMartien : public Martien {
 public: 
 
+	// constructeurs
 	miniMartien();
 
-	void dessinerExtraTerrestre(int x, int y);
-	miniMartien* dessinerLigneExtraterrestres(int nombre_extraterrestres, int y);
+	// methodes
+
+	// setter miniMartien
+	void setMiniMartien(int x, int y, int type);
+
+
+	void dessinerExtraTerrestre();
+	//miniMartien* dessinerLigneExtraterrestres(int nombre_extraterrestres, int y);
 };

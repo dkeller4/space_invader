@@ -30,18 +30,25 @@ void Jeu::startGame() {
 
 	// pour faire apparaitre le vaissau
 	sangomar.modifierPosition(75);
-	sangomar.tirerLaser();
+
+	// pour faire apparaitre les miniMartiens
+	miniMartien * aliensLigne1 = apparitionExraTerrestres(10);
+	miniMartien * aliensLigne2 = apparitionExraTerrestres(20);
+
+	
 	
 	do {
 		//	le vaissau tire
 		sangomar.tirerLaser();
+
+		
 
 		testCollision();
 
 		if (vaissauEstMort)
 			finDeJeu = true;
 
-		Sleep(100);
+		//Sleep(100);
 
 	} while (!finDeJeu);
 
@@ -50,8 +57,15 @@ void Jeu::startGame() {
 }
 
 // Methodes public
-void Jeu::apparitionExraTerrestres() {
+miniMartien * Jeu::apparitionExraTerrestres(int y) {
+	miniMartien aliens[8];
 
+	for (int i = 0; i < 8; i++) {
+		aliens[i].setMiniMartien( (y/3 + i * 8), y, (i % 3)+1);
+		aliens[i].dessinerExtraTerrestre();
+	}
+
+	return aliens;
 }
 
 //test de collision

@@ -57,6 +57,9 @@
     <ClCompile Include="MonVaisseau.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Son.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AfficheJeu.h">
