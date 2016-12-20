@@ -45,15 +45,15 @@ void Jeu::startGame() {
 	sangomar.modifierPosition(75);
 
 	// Dessiner les extraterrestres par ligne
-	miniMartien* monstresLigne1 = dessinerLigneExtraterrestres(5, 10);
+	/*miniMartien* monstresLigne1 = dessinerLigneExtraterrestres(5, 10);
 	miniMartien* monstresLigne2 = dessinerLigneExtraterrestres(10, 15);
-	miniMartien* monstresLigne2 = dessinerLigneExtraterrestres(7, 20);
+	miniMartien* monstresLigne2 = dessinerLigneExtraterrestres(7, 20);*/
 	
 
 	sangomar.tirerLaser();
 	
 	do {
-		//	le vaissau tire
+		//	le vaisseau tire
 		sangomar.tirerLaser();
 
 		testCollision();
