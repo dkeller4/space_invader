@@ -18,7 +18,7 @@ using namespace std;
 #define MAX_DOUBLE_LASERS 10
 #define DELAI_LASER 45
 
-class MonVaissau : public Vaisseau
+class MonVaisseau : public Vaisseau
 {
 private:
 	nvoLaser tabLasers[MAX_LASERS];
@@ -28,7 +28,7 @@ private:
 	void gestionLaser(int debutLaser, int maxLaser, int posXOffset);
 
 public:
-	MonVaissau();
+	MonVaisseau();
 
 	nvoLaser* getTabLasers();
 

@@ -1,4 +1,4 @@
-#include "MonVaissau.h"
+#include "MonVaisseau.h"
 #include "Vaisseau.h"
 #include "Laser.h"
 #include "Timer.h"
@@ -13,7 +13,7 @@
 using namespace std;
 
 // Methode privée
-void MonVaissau::gestionLaser(int debutLaser, int maxLaser, int posXOffset) {
+void MonVaisseau::gestionLaser(int debutLaser, int maxLaser, int posXOffset) {
 	int i = debutLaser;
 	while (i < maxLaser && tabLasers[i].isAlive == true)
 		i++;
@@ -30,7 +30,7 @@ void MonVaissau::gestionLaser(int debutLaser, int maxLaser, int posXOffset) {
 }
 
 // Constructeur
-MonVaissau::MonVaissau() {
+MonVaisseau::MonVaisseau() {
 	// Position initial du vaissau
 	coord.setPositionX(INIT_POS_X);
 	coord.setPositionY(INIT_POS_Y);
@@ -42,22 +42,22 @@ MonVaissau::MonVaissau() {
 		tabLasers[i].isAlive = false;
 }
 
-nvoLaser* MonVaissau::getTabLasers() {
+nvoLaser* MonVaisseau::getTabLasers() {
 	return tabLasers;
 }
 
-void MonVaissau::tirerSingleLaser() {
+void MonVaisseau::tirerSingleLaser() {
 	gestionLaser(0, MAX_LASERS, 2);
 }
 
 // Methodes public
-void MonVaissau::tirerDoubleLaser() {
+void MonVaisseau::tirerDoubleLaser() {
 	gestionLaser(0, MAX_DOUBLE_LASERS / 2, 0);
 	gestionLaser(MAX_DOUBLE_LASERS / 2, MAX_DOUBLE_LASERS, 4);
 }
 
 // tire un laser
-void MonVaissau::tirerLaser() {
+void MonVaisseau::tirerLaser() {
 	//	gestion du clavier
 	if (_kbhit()) {			//	une touche est prête ?
 		char touche = _getch();		//	on la prend du tampon
@@ -90,12 +90,12 @@ void MonVaissau::tirerLaser() {
 }
 
 // Test de collision
-bool MonVaissau::collision(int posX, int posY) {
+bool MonVaisseau::collision(int posX, int posY) {
 	return (posX >= coord.getPositionX() && posX <= coord.getPositionX() + (int)leVaissau.length() - 1
 		&& coord.getPositionY() == posY);
 }
 
-int MonVaissau::decompteLaser() const {
+int MonVaisseau::decompteLaser() const {
 	//	décompte des lasers
 	int cpt = 0;
 	for (int i = 0; i < MAX_LASERS; i++)
@@ -105,7 +105,7 @@ int MonVaissau::decompteLaser() const {
 	return cpt;
 }
 
-void MonVaissau::putVaisseau() const
+void MonVaisseau::putVaisseau() const
 {
 	UIKit::color(0x0007 + 0x0008);
 	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
@@ -113,7 +113,7 @@ void MonVaissau::putVaisseau() const
 	cout << leVaissau;
 }
 
-void MonVaissau::modifierPosition(char key)
+void MonVaisseau::modifierPosition(char key)
 {
 	removeVaisseau();
 	switch (key)
@@ -131,7 +131,7 @@ void MonVaissau::modifierPosition(char key)
 	putVaisseau();
 }
 
-void MonVaissau::removeVaisseau() const
+void MonVaisseau::removeVaisseau() const
 {
 	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
 	cout << "      ";

@@ -9,19 +9,6 @@
 #include "miniMartien.h"
 using namespace std;
 
-// Methodes privées
-void Jeu::lireFichier(const string & monfichier) {
-	// Ouvrir un fichier
-	ifstream fichier(monfichier.c_str());
-
-	if (fichier) {
-		string ligne;
-		while (getline(fichier, ligne)) {
-			cout << ligne << endl;
-		}
-	}
-
-}
 
 void Jeu::debut() {
 	finDeJeu = true;
@@ -43,17 +30,10 @@ void Jeu::startGame() {
 
 	// pour faire apparaitre le vaissau
 	sangomar.modifierPosition(75);
-
-	// Dessiner les extraterrestres par ligne
-	/*miniMartien* monstresLigne1 = dessinerLigneExtraterrestres(5, 10);
-	miniMartien* monstresLigne2 = dessinerLigneExtraterrestres(10, 15);
-	miniMartien* monstresLigne2 = dessinerLigneExtraterrestres(7, 20);*/
-	
-
 	sangomar.tirerLaser();
 	
 	do {
-		//	le vaisseau tire
+		//	le vaissau tire
 		sangomar.tirerLaser();
 
 		testCollision();
@@ -85,8 +65,7 @@ void Jeu::afficherGameOver() {
 	system("cls");
 	ecran.color(FOREGROUND_RED + FOREGROUND_INTENSITY);
 	UIKit::gotoXY(0, 20);
-	lireFichier(fichierGameOver);
-
+	cout << "GAME OVER.....!!!" << endl;
 	UIKit::gotoXY(0, 25);
 	for (int i = 0; i < 50; i++) {
 		cout << endl;
@@ -99,8 +78,7 @@ void Jeu::afficherVictoire() {
 	system("cls");
 	ecran.color(FOREGROUND_BLUE + FOREGROUND_INTENSITY);
 	UIKit::gotoXY(0, 20);
-	lireFichier(fichierVictoire);
-
+	cout << "VICTOIRE!!!!" << endl;
 	UIKit::gotoXY(0, 25);
 	for (int i = 0; i < 50; i++) {
 		cout << endl;
@@ -108,12 +86,6 @@ void Jeu::afficherVictoire() {
 	}
 }
 
-void Jeu::afficherTitreJeu() {
-	// Affiche le tire du jeu en lisant des fichiers
-	ecran.color(FOREGROUND_BLUE + FOREGROUND_INTENSITY);
-	ecran.color(FOREGROUND_GREEN + FOREGROUND_INTENSITY);
-	lireFichier(fichierTitre);
-}
 
 void Jeu::afficherTerrain() const {
 	// Clear consoles
@@ -129,7 +101,7 @@ void Jeu::afficherTerrain() const {
 	ecran.cadre(0, 0, nbColonnesTerrain, nbLignesTerrain, FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
 
 	// Creer le cadre info jeu (type extraterrstres + scores)
-	ecran.cadre(nbColonnesTerrain + 1, 0, nbColonnesTerrain + 1 + 25, 15, FOREGROUND_RED);
+	ecran.cadre(nbColonnesTerrain + 1, 0, nbColonnesTerrain + 1 + 25, 15, FOREGROUND_RED + FOREGROUND_INTENSITY);
 
 	
 	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
@@ -143,7 +115,7 @@ void Jeu::afficherTerrain() const {
 	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 2, 2);
 	cout << "Score : ";
-	ecran.color(FOREGROUND_BLUE + FOREGROUND_INTENSITY);
+	ecran.color(FOREGROUND_WHITE + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 2, 3);
 	cout << score;
 
