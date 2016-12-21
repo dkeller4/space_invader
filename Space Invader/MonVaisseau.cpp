@@ -13,6 +13,8 @@
 #include <string>
 using namespace std;
 
+#define FOREGROUND_CYAN 0x0003
+
 // Methode privée
 void MonVaisseau::gestionLaser(int debutLaser, int maxLaser, int posXOffset) {
 	int i = debutLaser;
@@ -47,24 +49,17 @@ DFLaser* MonVaisseau::getTabLasers() {
 	return tabLasers;
 }
 
-void MonVaisseau::tirerSingleLaser() {
+void MonVaisseau::tirerUnLaser() {
 	
 
 	gestionLaser(0, MAX_LASERS, 2);
 }
 
-// Methodes public
-void MonVaisseau::tirerDoubleLaser() {
-
-	gestionLaser(0, MAX_DOUBLE_LASERS / 2, 0);
-	gestionLaser(MAX_DOUBLE_LASERS / 2, MAX_DOUBLE_LASERS, 4);
-}
-
 // tire un laser
 void MonVaisseau::tirerLaser() {
 	//	gestion du clavier
-	if (_kbhit()) {			//	une touche est prête ?
-		char touche = _getch();		//	on la prend du tampon
+	if (_kbhit()) {			
+		char touche = _getch();		
 
 		// Si le clavier de control est utilise
 		if (touche == 224)
@@ -72,28 +67,20 @@ void MonVaisseau::tirerLaser() {
 			touche = _getch();
 		}
 
-		//	gestion vaisseau
+		
 		modifierPosition(touche);
 
 		//	gestion d'un nouveau tir de laser
 		if (touche == ' ') {
 
 			// laser simple
-			tirerSingleLaser();
+			tirerUnLaser();
 			
 			
 			// Jouer 1x le son laser.wav
 			PlaySound(TEXT("laser.mid"), NULL, SND_SYNC);
 		}
-		else if (touche == 'd' || touche == 'D') {
-			// double lasers
-			tirerDoubleLaser();
-			
-			
-			// Jouer 2x le son laser.wav
-			PlaySound(TEXT("laser.mid"), NULL, SND_SYNC);
-			PlaySound(TEXT("laser.mid"), NULL, SND_SYNC);
-		}
+		
 	}
 
 	//	gestion des lasers
@@ -109,7 +96,7 @@ bool MonVaisseau::collision(int posX, int posY) {
 		&& coord.getPositionY() == posY);
 }
 
-int MonVaisseau::decompteLaser() const {
+int MonVaisseau::nombreDeLaser() const {
 	//	décompte des lasers
 	int cpt = 0;
 	for (int i = 0; i < MAX_LASERS; i++)
@@ -121,9 +108,8 @@ int MonVaisseau::decompteLaser() const {
 
 void MonVaisseau::putVaisseau() const
 {
-	UIKit::color(0x0007 + 0x0008);
+	UIKit::color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
 	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
-
 	cout << leVaissau;
 }
 
@@ -150,3 +136,9 @@ void MonVaisseau::removeVaisseau() const
 	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
 	cout << "      ";
 }
+
+
+
+
+
+

@@ -108,6 +108,7 @@ void Menu::deplacer(COORD origine, COORD cible){
 	cout << "   " << endl;
 	//dessiner
 	gotoXY(cible);
+
 	cout << ":->" << endl;
 }
 

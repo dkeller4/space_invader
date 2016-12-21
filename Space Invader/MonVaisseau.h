@@ -33,12 +33,9 @@ public:
 	DFLaser* getTabLasers();
 
 	void tirerLaser();
-	void tirerDoubleLaser();
-	void tirerSingleLaser();
-	int decompteLaser() const;
-
+	void tirerUnLaser();
+	int nombreDeLaser() const;
 	bool collision(int posX, int posY);
-
 	void putVaisseau() const;
 	void modifierPosition(char key);
 	void removeVaisseau() const;
