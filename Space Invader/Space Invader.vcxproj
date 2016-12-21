@@ -28,7 +28,7 @@
     <ClCompile Include="Martien.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MonVaisseau.cpp" />
-    <ClCompile Include="nvoLaser.cpp" />
+    <ClCompile Include="DFlaser.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="UIKit.cpp" />
     <ClCompile Include="Vaisseau.cpp" />
@@ -43,7 +43,7 @@
     <ClInclude Include="Martien.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MonVaisseau.h" />
-    <ClInclude Include="nvoLaser.h" />
+    <ClInclude Include="DFLaser.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="UIKit.h" />
     <ClInclude Include="Vaisseau.h" />

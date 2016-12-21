@@ -3,7 +3,7 @@
 #include "Vaisseau.h"
 #include "Laser.h"
 #include "Timer.h"
-#include "nvoLaser.h"
+#include "DFLaser.h"
 
 #include <string>
 using namespace std;

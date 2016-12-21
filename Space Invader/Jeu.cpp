@@ -118,7 +118,7 @@ void Jeu::GameOver() {
 void Jeu::Victoire() {
 	//	effet d'effacement
 	system("cls");
-	ecran.color(FOREGROUND_BLUE + FOREGROUND_INTENSITY);
+	ecran.color(FOREGROUND_WHITE + FOREGROUND_INTENSITY);
 	UIKit::gotoXY(0, 20);
 	cout << "VICTOIRE!!!!" << endl;
 	UIKit::gotoXY(0, 25);
