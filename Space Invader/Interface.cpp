@@ -1,9 +1,9 @@
-#include "AfficheJeu.h"
+#include "Interface.h"
 #include "UIKit.h"
 #include "Menu.h"
 #include "Jeu.h"
 
-void jouer() {
+void play() {
 	UIKit ecran;
 
 	// Selection du choix du menu

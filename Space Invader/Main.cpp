@@ -1,7 +1,7 @@
-#include "AfficheJeu.h"
+#include "Interface.h"
 
 int main()
 {
-	jouer();
+	play();
 	return 0;
 }

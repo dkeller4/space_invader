@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AfficheJeu.cpp" />
+    <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Coord.cpp" />
     <ClCompile Include="ExtraTerrestre.cpp" />
     <ClCompile Include="Jeu.cpp" />
@@ -35,7 +35,7 @@
     <ClCompile Include="miniMartien.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AfficheJeu.h" />
+    <ClInclude Include="Interface.h" />
     <ClInclude Include="Coord.h" />
     <ClInclude Include="ExtraTerrestre.h" />
     <ClInclude Include="Jeu.h" />
