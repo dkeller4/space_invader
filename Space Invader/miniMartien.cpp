@@ -38,14 +38,17 @@ void miniMartien::dessinerExtraTerrestre()
 	cout << (char)41;
 
 }
-//
-//miniMartien* miniMartien::dessinerLigneExtraterrestres(int nombre_miniMartiens, int y)
-//{
-//	miniMartien * monstres = new miniMartien[nombre_miniMartiens];
-//	for (int i = 0; i < nombre_miniMartiens; i++) {
-//		if (i % 2 == 1) monstres[i].typeExtraTerrestre = 1;
-//		monstres[i].dessinerExtraTerrestre(2 + 60 / nombre_miniMartiens * i, y);
-//	};
-//	return monstres;
-//}
+
+
+void miniMartien::supprimerExtraterrestre()
+{
+	// On supprime la première ligne
+	UIKit::gotoXY(this->coord.getPositionX(), this->coord.getPositionY());
+	cout << "  ";
+
+	// on supprime la deuxieme ligne 
+	UIKit::gotoXY(this->coord.getPositionX() - 1, this->coord.getPositionY() - 1);
+	cout << "    ";
+}
+
 

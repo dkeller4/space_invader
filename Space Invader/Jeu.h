@@ -10,7 +10,7 @@
 #define FOREGROUND_CYAN 0x0003
 #define FOREGROUND_YELLOW 0x0006
 #define FOREGROUND_WHITE 0x0007
-
+#define MAX_ALIENS 25
 
 class Jeu
 {
@@ -24,17 +24,19 @@ private:
 	bool MortMiniMartienJaune;
 	bool MortMiniMartienRouge;
 	MonVaisseau sangomar;
+	miniMartien aliens[MAX_ALIENS];
+	int _nb_aliens = 0;
 	UIKit ecran;
 	void debut();
 
 public:
 	Jeu();
 	void demarrerLeJeu();
-	miniMartien* apparitionExraTerrestres(int y);
 	void testerLaCollision();
 	void affichageDuTerrain() const;
 	void GameOver();
 	void reinitialiserLejeu();
 	void Victoire();
 	void affichageScore();
+	void ligneExtraTerrestres(int, int, int);
 };

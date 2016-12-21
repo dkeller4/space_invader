@@ -29,7 +29,6 @@ protected:
 	void gotoXY(COORD pos);
 	void init();
 
-
 public:
 	Menu(string titre, string* listeChoix, int nbItem, int ligneDebut, int coloneDebut);
 	~Menu();
