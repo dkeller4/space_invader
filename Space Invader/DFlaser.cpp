@@ -6,6 +6,10 @@
 
 using namespace std;
 
+
+
+#define FOREGROUND_WHITE 0x0007
+
 //constructeur avec parametre
 DFLaser::DFLaser(int direction){
 	this->direction = direction;
@@ -26,7 +30,7 @@ void DFLaser::initLaser(int x, int y, int direction){
 void DFLaser::moveLaser(int direction){
 	this->direction = direction;
 	removeLaser();
-	if (coord.getPositionY() < 40 && coord.getPositionY() > 1)
+	if (coord.getPositionY() < 50 && coord.getPositionY() > 1)
 	{
 		coord.setPositionY(coord.getPositionY() + direction);
 		putLaser();
@@ -44,7 +48,7 @@ void DFLaser::putLaser() const
 		cout << '|';
 	}
 	else {
-		UIKit::color(FOREGROUND_RED + FOREGROUND_INTENSITY);
+		UIKit::color(FOREGROUND_WHITE + FOREGROUND_INTENSITY);
 		cout << '|';
 	}
 

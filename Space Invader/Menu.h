@@ -6,11 +6,11 @@
 #include <iostream>
 using namespace std;
 #include <string>
-#include <windows.h>	//pour Sleep et gotoXY et COORD
-#include <conio.h>	//pour getch
-#include <ctype.h>	//pour tolower
+#include <windows.h>	
+#include <conio.h>	
+#include <ctype.h>	
 
-//la classe Menu pour gérer les flèches
+
 class Menu
 {
 	string _titre;

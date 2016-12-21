@@ -2,7 +2,6 @@
 #include "UIKit.h"
 #include "Timer.h"
 #include <time.h>
-#include <fstream>
 #include <string>
 #include <iostream>
 #include "ExtraTerrestre.h"
@@ -30,31 +29,41 @@ void Jeu::affichageDuTerrain() const {
 	ecran.setDimensionFenetre(0, 0, nbColonnesTerrain + 30, nbLignesTerrain + 30);
 	// zone informations sur le terrain de jeu
 	ecran.cadre(0, 0, nbColonnesTerrain, nbLignesTerrain, FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
+
+
+
 	//zone informations sur le jeu
-	ecran.cadre(nbColonnesTerrain + 2, 0, nbColonnesTerrain + 1 + 28, 15, FOREGROUND_RED + FOREGROUND_INTENSITY);
-	ecran.color(FOREGROUND_RED + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 7, 2);
+	ecran.cadre(nbColonnesTerrain + 2, 0, nbColonnesTerrain + 1 + 28, 51, FOREGROUND_RED + FOREGROUND_INTENSITY);
+	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 9, 7);
 	cout << "INFOS GAME";
+
+
 	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 8, 5);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 10, 14);
 	cout << "COINS: ";
 
+
 	ecran.color(FOREGROUND_RED + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 7);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 16);
 	cout << "MiniMartiensR: " << " COINS";
 
 	ecran.color(FOREGROUND_BLUE + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 8);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 18);
 	cout << "MiniMartiensB: " << " COINS";
 
 	ecran.color(FOREGROUND_GREEN + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 9);
-	cout << "MiniMartiensV: " << " COINS";
+	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 20);
+	cout << "MiniMartiensG: " << " COINS";
 
-	ecran.color(FOREGROUND_GREEN + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 8, 12);
-	cout << "Score: ";
+
+	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 10, 22);
+	cout << "Score:";
+
+
 	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 12, 25);
 	cout << score;
 
 }

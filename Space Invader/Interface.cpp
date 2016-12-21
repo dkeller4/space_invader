@@ -3,14 +3,15 @@
 #include "Menu.h"
 #include "Jeu.h"
 
+
 void play() {
 	UIKit ecran;
 
 	// Selection du choix du menu
-	int choixMenu;
+	int choix;
 
 	// Affiche le menu du jeu
-	string listeChoix[] = { "Demarrer une partie", "Quitter le jeu" };
+	string listeChoix[] = { "Demarrer une partie", "Quitter le jeu"};
 	Menu MenuDuJeu("", listeChoix, 2, 8, 30);
 
 	do {
@@ -21,14 +22,14 @@ void play() {
 		// Cache le curseur
 		ecran.curseurVisible(false);
 
-		UIKit::color(FOREGROUND_WHITE + FOREGROUND_INTENSITY);
-		choixMenu = MenuDuJeu.afficherMenu();
+		UIKit::color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
+		choix = MenuDuJeu.afficherMenu();
 
-		if (choixMenu == 1) spaceInvader.demarrerLeJeu();
+		if (choix == 1) spaceInvader.demarrerLeJeu();
 
 
-	} while (choixMenu != 2);
+	} while (choix != 2);
 
-	if (choixMenu == 2)
+	if (choix == 2)
 		exit(0);
 }

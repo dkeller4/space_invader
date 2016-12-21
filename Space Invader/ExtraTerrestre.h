@@ -13,7 +13,6 @@ protected:
 public:
 	Coord coord;
 	bool isAlive;
-
 	ExtraTerrestre(int type, int valeur);
 	static void reduireNombreExtraTerrestre();
 	static int getNombreExtraTerrestre();
