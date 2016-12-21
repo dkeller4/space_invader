@@ -7,15 +7,15 @@
 using namespace std;
 
 //constructeur avec parametre
-nvoLaser::nvoLaser(int direction){
+DFLaser::DFLaser(int direction){
 	this->direction = direction;
 }
 
 //constructeur sans parametre
-nvoLaser::nvoLaser(){}
+DFLaser::DFLaser(){}
 
 //initialiser laser
-void nvoLaser::enclencherLaser(int x, int y, int direction){
+void DFLaser::initLaser(int x, int y, int direction){
 	coord.setPositionX(x);
 	coord.setPositionY(y + direction);
 	putLaser();
@@ -23,7 +23,7 @@ void nvoLaser::enclencherLaser(int x, int y, int direction){
 }
 
 //deplacer laser
-void nvoLaser::bougeLaser(int direction){
+void DFLaser::moveLaser(int direction){
 	this->direction = direction;
 	removeLaser();
 	if (coord.getPositionY() < 40 && coord.getPositionY() > 1)
@@ -36,7 +36,7 @@ void nvoLaser::bougeLaser(int direction){
 }
 
 //mettre le laser
-void nvoLaser::putLaser() const
+void DFLaser::putLaser() const
 {
 	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
 	if (direction == 1) {
@@ -51,7 +51,7 @@ void nvoLaser::putLaser() const
 }
 
 //test de collision
-bool nvoLaser::collision(int posX, int posY)
+bool DFLaser::collision(int posX, int posY)
 {
 	bool collision = false;
 	if (coord.getPositionX() == posX && coord.getPositionY() == posY){

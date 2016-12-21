@@ -11,10 +11,10 @@ using namespace std;
 
 
 void Jeu::debut() {
-	finDeJeu = true;
-	vaissauEstMort = false;
-	unVenusienEstMort = false;
-	unSaturnienEstMort = false;
+	gameOver = true;
+	MortVaisseau = false;
+	MortMiniMartienJaune = false;
+	MortMiniMartienRouge = false;
 	score = 0;
 }
 
@@ -22,11 +22,39 @@ void Jeu::debut() {
 Jeu::Jeu() {
 	debut();
 }
+void Jeu::affichageDuTerrain() const {
+	system("cls");
+	ecran.curseurVisible(false);
+	//Taille de la fenetre
+	ecran.setDimensionFenetre(0, 0, nbColonnesTerrain + 30, nbLignesTerrain + 30);
+	// zone informations sur le terrain de jeu
+	ecran.cadre(0, 0, nbColonnesTerrain, nbLignesTerrain, FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
+	//zone informations sur le jeu
+	ecran.cadre(nbColonnesTerrain + 2, 0, nbColonnesTerrain + 1 + 28, 15, FOREGROUND_RED + FOREGROUND_INTENSITY);
+	ecran.color(FOREGROUND_RED + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 7, 2);
+	cout << "INFOS GAME";
+	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 8, 5);
+	cout << "COINS: ";
+	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 8);
+	cout << "MiniMartiensR: " << " COINS";
+	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 7);
+	cout << "MiniMartiensJ: " << " COINS";
+	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 8, 10);
+	cout << "Score:";
+	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 10, 12);
+	cout << score;
 
-void Jeu::startGame() {
+}
 
-	finDeJeu = false;
-	afficherTerrain();
+void Jeu::demarrerLeJeu() {
+
+	gameOver = false;
+	affichageDuTerrain();
 
 	// pour faire apparaitre le vaissau
 	sangomar.modifierPosition(75);
@@ -43,17 +71,17 @@ void Jeu::startGame() {
 
 		
 
-		testCollision();
+		testerLaCollision();
 
-		if (vaissauEstMort)
-			finDeJeu = true;
+		if (MortVaisseau)
+			gameOver = true;
 
 		//Sleep(100);
 
-	} while (!finDeJeu);
+	} while (!gameOver);
 
-	if (vaissauEstMort)
-		afficherGameOver();
+	if (MortVaisseau)
+		GameOver();
 }
 
 // Methodes public
@@ -69,12 +97,12 @@ miniMartien * Jeu::apparitionExraTerrestres(int y) {
 }
 
 //test de collision
-void Jeu::testCollision()
+void Jeu::testerLaCollision()
 {
 	
 }
 
-void Jeu::afficherGameOver() {
+void Jeu::GameOver() {
 	//	effet d'effacement
 	system("cls");
 	ecran.color(FOREGROUND_RED + FOREGROUND_INTENSITY);
@@ -87,7 +115,7 @@ void Jeu::afficherGameOver() {
 	}
 }
 
-void Jeu::afficherVictoire() {
+void Jeu::Victoire() {
 	//	effet d'effacement
 	system("cls");
 	ecran.color(FOREGROUND_BLUE + FOREGROUND_INTENSITY);
@@ -101,46 +129,14 @@ void Jeu::afficherVictoire() {
 }
 
 
-void Jeu::afficherTerrain() const {
-	// Clear consoles
-	system("cls");
 
-	// Cache le curseur
-	ecran.curseurVisible(false);
 
-	// Initialise les dimensions de la fenetre
-	ecran.setDimensionFenetre(0, 0, nbColonnesTerrain + 30, nbLignesTerrain + 30);
-
-	// Creer le cadre du terrain de jeu
-	ecran.cadre(0, 0, nbColonnesTerrain, nbLignesTerrain, FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
-
-	// Creer le cadre info jeu (type extraterrstres + scores)
-	ecran.cadre(nbColonnesTerrain + 1, 0, nbColonnesTerrain + 1 + 25, 15, FOREGROUND_RED + FOREGROUND_INTENSITY);
-
-	
-	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 2, 5);
-	cout << "COINS : ";
-	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 2, 6);
-	cout << "Venusien : " << " COINS";
-	ecran.gotoXY(nbColonnesTerrain + 1 + 2, 7);
-	cout << "Saturnien : " << " COINS";
-	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 2, 2);
-	cout << "Score : ";
-	ecran.color(FOREGROUND_WHITE + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 2, 3);
-	cout << score;
-
-}
-
-void Jeu::resetGame() {
+void Jeu::reinitialiserLejeu() {
 	system("cls");
 	debut();
 }
 
-void Jeu::afficherScore() {
+void Jeu::affichageScore() {
 	// affiche le score du combat
 	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 2, 3);
