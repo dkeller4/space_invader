@@ -104,4 +104,9 @@
       <Filter>Source Files</Filter>
     </Media>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="laser.mid">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
