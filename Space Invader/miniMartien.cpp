@@ -20,9 +20,9 @@ void miniMartien::setMiniMartien(int x, int y, int type)
 
 void miniMartien::dessinerExtraTerrestre()
 {
-	if (this->typeExtraTerrestre == 1)	UIKit::color(FOREGROUND_RED);
-	else if (this->typeExtraTerrestre == 2)	UIKit::color(FOREGROUND_BLUE);
-	else if (this->typeExtraTerrestre == 3)	UIKit::color(FOREGROUND_GREEN);
+	if (this->typeExtraTerrestre == 1)	UIKit::color(FOREGROUND_RED + FOREGROUND_INTENSITY);
+	else if (this->typeExtraTerrestre == 2)	UIKit::color(FOREGROUND_BLUE + FOREGROUND_INTENSITY);
+	else if (this->typeExtraTerrestre == 3)	UIKit::color(FOREGROUND_GREEN + FOREGROUND_INTENSITY);
 
 
 	// on dessine la premiere ligne 

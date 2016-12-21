@@ -37,16 +37,23 @@ void Jeu::affichageDuTerrain() const {
 	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 8, 5);
 	cout << "COINS: ";
-	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 8);
-	cout << "MiniMartiensR: " << " COINS";
+
+	ecran.color(FOREGROUND_RED + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 7);
-	cout << "MiniMartiensJ: " << " COINS";
-	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 8, 10);
-	cout << "Score:";
+	cout << "MiniMartiensR: " << " COINS";
+
+	ecran.color(FOREGROUND_BLUE + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 8);
+	cout << "MiniMartiensB: " << " COINS";
+
+	ecran.color(FOREGROUND_GREEN + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 9);
+	cout << "MiniMartiensV: " << " COINS";
+
+	ecran.color(FOREGROUND_GREEN + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 8, 12);
+	cout << "Score: ";
 	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 10, 12);
 	cout << score;
 
 }
@@ -85,7 +92,7 @@ void Jeu::demarrerLeJeu() {
 }
 
 // Methodes public
-miniMartien * Jeu::apparitionExraTerrestres(int y) {
+miniMartien* Jeu::apparitionExraTerrestres(int y) {
 	miniMartien aliens[8];
 
 	for (int i = 0; i < 8; i++) {
@@ -127,9 +134,6 @@ void Jeu::Victoire() {
 		Sleep(70);
 	}
 }
-
-
-
 
 void Jeu::reinitialiserLejeu() {
 	system("cls");
