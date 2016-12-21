@@ -20,9 +20,9 @@ void miniMartien::setMiniMartien(int x, int y, int type)
 
 void miniMartien::dessinerExtraTerrestre()
 {
-	if (this->typeExtraTerrestre == 1)	UIKit::color(FOREGROUND_RED);
-	else if (this->typeExtraTerrestre == 2)	UIKit::color(FOREGROUND_BLUE);
-	else if (this->typeExtraTerrestre == 3)	UIKit::color(FOREGROUND_GREEN);
+	if (this->typeExtraTerrestre == 1)	UIKit::color(FOREGROUND_RED + FOREGROUND_INTENSITY);
+	else if (this->typeExtraTerrestre == 2)	UIKit::color(FOREGROUND_BLUE + FOREGROUND_INTENSITY);
+	else if (this->typeExtraTerrestre == 3)	UIKit::color(FOREGROUND_GREEN + FOREGROUND_INTENSITY);
 
 
 	// on dessine la premiere ligne 
@@ -38,14 +38,17 @@ void miniMartien::dessinerExtraTerrestre()
 	cout << (char)41;
 
 }
-//
-//miniMartien* miniMartien::dessinerLigneExtraterrestres(int nombre_miniMartiens, int y)
-//{
-//	miniMartien * monstres = new miniMartien[nombre_miniMartiens];
-//	for (int i = 0; i < nombre_miniMartiens; i++) {
-//		if (i % 2 == 1) monstres[i].typeExtraTerrestre = 1;
-//		monstres[i].dessinerExtraTerrestre(2 + 60 / nombre_miniMartiens * i, y);
-//	};
-//	return monstres;
-//}
+
+
+void miniMartien::supprimerExtraterrestre()
+{
+	// On supprime la première ligne
+	UIKit::gotoXY(this->coord.getPositionX(), this->coord.getPositionY());
+	cout << "  ";
+
+	// on supprime la deuxieme ligne 
+	UIKit::gotoXY(this->coord.getPositionX() - 1, this->coord.getPositionY() - 1);
+	cout << "    ";
+}
+
 

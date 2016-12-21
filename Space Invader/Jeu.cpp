@@ -20,6 +20,7 @@ void Jeu::debut() {
 // Constructeur
 Jeu::Jeu() {
 	debut();
+
 }
 void Jeu::affichageDuTerrain() const {
 	system("cls");
@@ -71,18 +72,21 @@ void Jeu::demarrerLeJeu() {
 
 	gameOver = false;
 	affichageDuTerrain();
+	// chargement du son
+	PlaySound(TEXT("laser.mid"), NULL, SND_MEMORY);
 
-	// pour faire apparaitre le vaissau
+	// pour faire apparaitre le vaisseau
 	sangomar.modifierPosition(75);
 
 	// pour faire apparaitre les miniMartiens
-	miniMartien * aliensLigne1 = apparitionExraTerrestres(10);
-	miniMartien * aliensLigne2 = apparitionExraTerrestres(20);
-
+	ligneExtraTerrestres(10, 8, 3);
+	ligneExtraTerrestres(15, 10, 4);
+	
+	aliens[2].supprimerExtraterrestre();
 
 	
 	do {
-		//	le vaissau tire
+		//	le vaisseau tire
 		sangomar.tirerLaser();
 
 		
@@ -101,16 +105,6 @@ void Jeu::demarrerLeJeu() {
 }
 
 // Methodes public
-miniMartien * Jeu::apparitionExraTerrestres(int y) {
-	miniMartien aliens[8];
-
-	for (int i = 0; i < 8; i++) {
-		aliens[i].setMiniMartien( (y/3 + i * 8), y, (i % 3)+1);
-		aliens[i].dessinerExtraTerrestre();
-	}
-
-	return aliens;
-}
 
 //test de collision
 void Jeu::testerLaCollision()
@@ -144,9 +138,6 @@ void Jeu::Victoire() {
 	}
 }
 
-
-
-
 void Jeu::reinitialiserLejeu() {
 	system("cls");
 	debut();
@@ -161,5 +152,10 @@ void Jeu::affichageScore() {
 	cout << score;
 }
 
-
-
+void Jeu::ligneExtraTerrestres(int position_y, int nombre_aliens, int depart) {
+	for (int i = _nb_aliens; i < _nb_aliens + nombre_aliens; i++) {
+		aliens[i].setMiniMartien( depart + (i - _nb_aliens) * nbColonnesTerrain/(nombre_aliens), position_y, (i % 3) + 1);
+		aliens[i].dessinerExtraTerrestre();
+	}
+	_nb_aliens += nombre_aliens;
+}

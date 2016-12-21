@@ -58,8 +58,8 @@ void MonVaisseau::tirerUnLaser() {
 // tire un laser
 void MonVaisseau::tirerLaser() {
 	//	gestion du clavier
-	if (_kbhit()) {			
-		char touche = _getch();		
+	if (_kbhit()) {			//	une touche est prête ?
+		char touche = _getch();		//	on la prend du tampon
 
 		// Si le clavier de control est utilise
 		if (touche == 224)
@@ -67,7 +67,7 @@ void MonVaisseau::tirerLaser() {
 			touche = _getch();
 		}
 
-		
+		//	gestion vaisseau
 		modifierPosition(touche);
 
 		//	gestion d'un nouveau tir de laser
@@ -78,7 +78,7 @@ void MonVaisseau::tirerLaser() {
 			
 			
 			// Jouer 1x le son laser.wav
-			PlaySound(TEXT("laser.mid"), NULL, SND_SYNC);
+			//PlaySound(TEXT("laser.mid"), NULL, SND_SYNC);
 		}
 		
 	}

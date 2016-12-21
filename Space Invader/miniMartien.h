@@ -2,6 +2,7 @@
 #include "Martien.h"
 
 class miniMartien : public Martien {
+private:
 public: 
 
 	// constructeurs
@@ -14,5 +15,6 @@ public:
 
 
 	void dessinerExtraTerrestre();
-	//miniMartien* dessinerLigneExtraterrestres(int nombre_extraterrestres, int y);
+
+	void supprimerExtraterrestre();
 };
