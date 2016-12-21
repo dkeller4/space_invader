@@ -8,7 +8,7 @@
 #include <string>
 using namespace std;
 
-#define BORDURE_POS_X_DROITE 54
+#define BORDURE_POS_X_DROITE 64
 #define BORDURE_POS_X_GAUCHE 1
 
 #define INIT_POS_X 20
