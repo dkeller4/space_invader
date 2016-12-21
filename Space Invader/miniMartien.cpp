@@ -49,6 +49,10 @@ void miniMartien::supprimerExtraterrestre()
 	// on supprime la deuxieme ligne 
 	UIKit::gotoXY(this->coord.getPositionX() - 1, this->coord.getPositionY() - 1);
 	cout << "    ";
+
+	this->coord.setPositionX(0);
+	this->coord.setPositionY(0);
+
 }
 
 

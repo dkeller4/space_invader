@@ -16,18 +16,20 @@ using namespace std;
 #define FOREGROUND_CYAN 0x0003
 
 // Methode privée
-void MonVaisseau::gestionLaser(int debutLaser, int maxLaser, int posXOffset) {
+void MonVaisseau::gestionLaser(int debutLaser, int maxLaser, int milieu_vaisseau) {
 	int i = debutLaser;
+
+	// on recherche l'indice du nouveau laser
 	while (i < maxLaser && tabLasers[i].isAlive == true)
 		i++;
 
 	if (i < maxLaser) {		//	une case avec un laser 'mort' ?
-		tabLasers[i].initLaser(coord.getPositionX() + posXOffset, coord.getPositionY(), -1);
+		tabLasers[i].initLaser(coord.getPositionX() + milieu_vaisseau, coord.getPositionY(), -1);
 		tabLasersTimer[i].setDelai(DELAI_LASER);
 	}
 
 	if (i < maxLaser) {		//	une case avec un laser 'mort' ?
-		tabLasers[i].initLaser(coord.getPositionX() + posXOffset, coord.getPositionY(), -1);
+		tabLasers[i].initLaser(coord.getPositionX() + milieu_vaisseau, coord.getPositionY(), -1);
 		tabLasersTimer[i].setDelai(DELAI_LASER);
 	}
 }
@@ -50,8 +52,6 @@ DFLaser* MonVaisseau::getTabLasers() {
 }
 
 void MonVaisseau::tirerUnLaser() {
-	
-
 	gestionLaser(0, MAX_LASERS, 2);
 }
 
@@ -136,9 +136,4 @@ void MonVaisseau::removeVaisseau() const
 	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
 	cout << "      ";
 }
-
-
-
-
-
 

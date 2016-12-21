@@ -21,13 +21,13 @@ using namespace std;
 class MonVaisseau : public Vaisseau
 {
 private:
-	DFLaser tabLasers[MAX_LASERS];
 	Timer tabLasersTimer[MAX_LASERS];
 	string leVaissau;
 
 	void gestionLaser(int debutLaser, int maxLaser, int posXOffset);
 
 public:
+	DFLaser tabLasers[MAX_LASERS];
 	MonVaisseau();
 
 	DFLaser* getTabLasers();

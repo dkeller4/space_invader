@@ -6,8 +6,6 @@
 
 using namespace std;
 
-
-
 #define FOREGROUND_WHITE 0x0007
 
 //constructeur avec parametre
@@ -51,7 +49,6 @@ void DFLaser::putLaser() const
 		UIKit::color(FOREGROUND_WHITE + FOREGROUND_INTENSITY);
 		cout << '|';
 	}
-
 }
 
 //test de collision

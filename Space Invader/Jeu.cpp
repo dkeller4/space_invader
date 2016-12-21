@@ -109,13 +109,21 @@ void Jeu::demarrerLeJeu() {
 //test de collision
 void Jeu::testerLaCollision()
 {
-	aliens[]
+	for (int i = 0; i < _nb_aliens; i++) {
+		for (int j = 0; j < MAX_LASERS; j++) {
+			if (sangomar.tabLasers[j].isAlive &&
+				// Tester les collisions avec les quatres coins des aliens
+					(		sangomar.tabLasers[j].collision(aliens[i].coord.getPositionX(), aliens[i].coord.getPositionY() ) || 
+						sangomar.tabLasers[j].collision(aliens[i].coord.getPositionX()+1, aliens[i].coord.getPositionY() ) ||
+						sangomar.tabLasers[j].collision(aliens[i].coord.getPositionX() + 2, aliens[i].coord.getPositionY()-1) ||
+						sangomar.tabLasers[j].collision(aliens[i].coord.getPositionX() -1, aliens[i].coord.getPositionY()-1)
+					)
+				) {
+				aliens[i].supprimerExtraterrestre();
+			}
+		}
+	}
 
-		MonVaisseau.tabLaser
-
-
-
-		aliens[2].supprimerExtraterrestre();
 }
 
 void Jeu::GameOver() {
