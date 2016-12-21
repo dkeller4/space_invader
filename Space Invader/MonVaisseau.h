@@ -21,7 +21,7 @@ using namespace std;
 class MonVaisseau : public Vaisseau
 {
 private:
-	nvoLaser tabLasers[MAX_LASERS];
+	DFLaser tabLasers[MAX_LASERS];
 	Timer tabLasersTimer[MAX_LASERS];
 	string leVaissau;
 
@@ -30,7 +30,7 @@ private:
 public:
 	MonVaisseau();
 
-	nvoLaser* getTabLasers();
+	DFLaser* getTabLasers();
 
 	void tirerLaser();
 	void tirerDoubleLaser();

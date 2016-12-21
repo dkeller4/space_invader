@@ -24,7 +24,7 @@ void play() {
 		UIKit::color(FOREGROUND_WHITE + FOREGROUND_INTENSITY);
 		choixMenu = MenuDuJeu.afficherMenu();
 
-		if (choixMenu == 1) spaceInvader.startGame();
+		if (choixMenu == 1) spaceInvader.demarrerLeJeu();
 
 
 	} while (choixMenu != 2);

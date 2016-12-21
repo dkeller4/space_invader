@@ -16,25 +16,25 @@ class Jeu
 {
 private:
 
-	static const int nbLignesTerrain = 50 + 1;
+	static const int nbLignesTerrain = 60 + 1;
 	static const int nbColonnesTerrain = 70;
 	int score;
-	bool finDeJeu;
-	bool vaissauEstMort;
-	bool unVenusienEstMort;
-	bool unSaturnienEstMort;
+	bool gameOver;
+	bool MortVaisseau;
+	bool MortMiniMartienJaune;
+	bool MortMiniMartienRouge;
 	MonVaisseau sangomar;
 	UIKit ecran;
 	void debut();
 
 public:
 	Jeu();
-	void startGame();
-	void resetGame();
-	void testCollision();
+	void demarrerLeJeu();
 	miniMartien* apparitionExraTerrestres(int y);
-	void afficherTerrain() const;
-	void afficherGameOver();
-	void afficherVictoire();
-	void afficherScore();
+	void testerLaCollision();
+	void affichageDuTerrain() const;
+	void GameOver();
+	void reinitialiserLejeu();
+	void Victoire();
+	void affichageScore();
 };

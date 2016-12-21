@@ -20,12 +20,12 @@ void MonVaisseau::gestionLaser(int debutLaser, int maxLaser, int posXOffset) {
 		i++;
 
 	if (i < maxLaser) {		//	une case avec un laser 'mort' ?
-		tabLasers[i].enclencherLaser(coord.getPositionX() + posXOffset, coord.getPositionY(), -1);
+		tabLasers[i].initLaser(coord.getPositionX() + posXOffset, coord.getPositionY(), -1);
 		tabLasersTimer[i].setDelai(DELAI_LASER);
 	}
 
 	if (i < maxLaser) {		//	une case avec un laser 'mort' ?
-		tabLasers[i].enclencherLaser(coord.getPositionX() + posXOffset, coord.getPositionY(), -1);
+		tabLasers[i].initLaser(coord.getPositionX() + posXOffset, coord.getPositionY(), -1);
 		tabLasersTimer[i].setDelai(DELAI_LASER);
 	}
 }
@@ -43,7 +43,7 @@ MonVaisseau::MonVaisseau() {
 		tabLasers[i].isAlive = false;
 }
 
-nvoLaser* MonVaisseau::getTabLasers() {
+DFLaser* MonVaisseau::getTabLasers() {
 	return tabLasers;
 }
 
@@ -99,7 +99,7 @@ void MonVaisseau::tirerLaser() {
 	//	gestion des lasers
 	for (int i = 0; i < MAX_LASERS; i++) {
 		if (tabLasers[i].isAlive && tabLasersTimer[i].tempsEcoule())
-			tabLasers[i].bougeLaser(-1);
+			tabLasers[i].moveLaser(-1);
 	}
 }
 
