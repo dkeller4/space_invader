@@ -83,7 +83,7 @@ void MonVaisseau::tirerLaser() {
 			
 			
 			// Jouer 1x le son laser.wav
-			PlaySound(TEXT("laser.wav"), NULL, SND_SYNC);
+			PlaySound(TEXT("laser.mid"), NULL, SND_SYNC);
 		}
 		else if (touche == 'd' || touche == 'D') {
 			// double lasers
@@ -91,8 +91,8 @@ void MonVaisseau::tirerLaser() {
 			
 			
 			// Jouer 2x le son laser.wav
-			PlaySound(TEXT("laser.wav"), NULL, SND_SYNC);
-			PlaySound(TEXT("laser.wav"), NULL, SND_SYNC);
+			PlaySound(TEXT("laser.mid"), NULL, SND_SYNC);
+			PlaySound(TEXT("laser.mid"), NULL, SND_SYNC);
 		}
 	}
 

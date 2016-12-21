@@ -52,6 +52,9 @@
   <ItemGroup>
     <Media Include="laser.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="laser.mid" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3679EFC3-7CAA-4703-8441-893DC4072CD7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
