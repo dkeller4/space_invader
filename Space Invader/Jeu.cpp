@@ -73,7 +73,7 @@ void Jeu::demarrerLeJeu() {
 	ligneExtraTerrestres(10, 8, 3);
 	ligneExtraTerrestres(15, 10, 4);
 	
-	aliens[2].supprimerExtraterrestre();
+	
 
 	
 	do {
@@ -100,7 +100,13 @@ void Jeu::demarrerLeJeu() {
 //test de collision
 void Jeu::testerLaCollision()
 {
-	
+	aliens[]
+
+		MonVaisseau.tabLaser
+
+
+
+		aliens[2].supprimerExtraterrestre();
 }
 
 void Jeu::GameOver() {
