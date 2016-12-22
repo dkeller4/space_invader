@@ -23,8 +23,10 @@ private:
 	bool MortVaisseau;
 	bool MortMiniMartienJaune;
 	bool MortMiniMartienRouge;
+	Timer delaiJiggle;
 	MonVaisseau sangomar;
 	miniMartien aliens[MAX_ALIENS];
+	bool direction_gauche = true;
 	int _nb_aliens = 0;
 	UIKit ecran;
 	void debut();
@@ -32,6 +34,7 @@ private:
 public:
 	Jeu();
 	void demarrerLeJeu();
+	void jiggle();
 	void testerLaCollision();
 	void affichageDuTerrain() const;
 	void GameOver();
