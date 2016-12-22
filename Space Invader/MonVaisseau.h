@@ -29,10 +29,11 @@ private:
 
 
 public:
+	int vies= 4;
 	DFLaser tabLasers[MAX_LASERS];
 	MonVaisseau();
 
-	MonVaisseau(bool alien);
+	void setvaisseauAlien();
 
 	DFLaser* getTabLasers();
 	Timer delaiTir;

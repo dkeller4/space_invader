@@ -61,7 +61,7 @@ void MonVaisseau::gestionLaserAliens(int maxLaser, int nb_aliens, const miniMart
 
 	}
 	// on reinitialise le delai
-	delaiTir.setDelai(4000);
+	delaiTir.setDelai(5000);
 
 
 	// gestion des lasers
@@ -87,9 +87,9 @@ MonVaisseau::MonVaisseau() {
 		tabLasers[i].isAlive = false;
 }
 
-MonVaisseau::MonVaisseau(bool alien){
-	coord.setPositionX(0);
-	coord.setPositionY(0);
+void MonVaisseau::setvaisseauAlien(){
+	coord.setPositionX(100);
+	coord.setPositionY(100);
 }
 
 DFLaser* MonVaisseau::getTabLasers() {

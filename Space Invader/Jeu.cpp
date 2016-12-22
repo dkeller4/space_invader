@@ -79,7 +79,7 @@ void Jeu::demarrerLeJeu() {
 	sangomar.modifierPosition(75);
 	 
 	// creation du vaisseau aliens
-	MonVaisseau vaisseau_aliens(true);
+	vaisseau_aliens.setvaisseauAlien();
 
 	// pour faire apparaitre les miniMartiens
 	ligneExtraTerrestres(10, 8, 3);
@@ -96,8 +96,11 @@ void Jeu::demarrerLeJeu() {
 		// tirs des aliens
 		vaisseau_aliens.gestionLaserAliens(25, _nb_aliens, aliens);
 
-		// tester les collisions avec les aliens
+		// tester les tirs du vaisseau
 		testerLaCollision();
+
+		// tester les tirs des aliens
+		testerCollisionsAliens();
 
 		// mouvement des aliens
 		mouvement();
@@ -184,7 +187,7 @@ void Jeu::mouvement() {
 }
 
 
-//test de collision
+//tester les tirs du vaisseau
 void Jeu::testerLaCollision()
 {
 	for (int i = 0; i < _nb_aliens; i++) {
@@ -204,6 +207,18 @@ void Jeu::testerLaCollision()
 	}
 
 }
+
+// tester les tirs des aliens
+void Jeu::testerCollisionsAliens() {
+	for (int j = 0; j < MAX_LASERS; j++) {
+		if (sangomar.collision(vaisseau_aliens.tabLasers[j].coord.getPositionX(), vaisseau_aliens.tabLasers[j].coord.getPositionY())) {
+			sangomar.vies -= 1;
+		
+		}
+	}
+
+}
+
 
 void Jeu::GameOver() {
 	//	effet d'effacement

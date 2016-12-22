@@ -26,6 +26,7 @@ private:
 	Timer delaiJiggle;
 	Timer delaiTir;
 	MonVaisseau sangomar;
+	MonVaisseau vaisseau_aliens;
 	miniMartien aliens[MAX_ALIENS];
 	bool direction_gauche = true;
 	int _nb_aliens = 0;
@@ -37,6 +38,7 @@ public:
 	void demarrerLeJeu();
 	void mouvement();
 	void testerLaCollision();
+	void testerCollisionsAliens();
 	void affichageDuTerrain() const;
 	void GameOver();
 	void reinitialiserLejeu();
