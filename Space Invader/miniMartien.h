@@ -16,5 +16,7 @@ public:
 
 	void dessinerExtraTerrestre();
 
+	void effacerExtraTerrestre();
+
 	void supprimerExtraterrestre();
 };

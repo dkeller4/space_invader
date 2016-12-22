@@ -5,6 +5,7 @@
 
 class Martien : public ExtraTerrestre
 {
+public:
 	bool jiggle;
 
 public:

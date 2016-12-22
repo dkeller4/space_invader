@@ -23,12 +23,12 @@ void MonVaisseau::gestionLaser(int debutLaser, int maxLaser, int milieu_vaisseau
 	while (i < maxLaser && tabLasers[i].isAlive == true)
 		i++;
 
-	if (i < maxLaser) {		//	une case avec un laser 'mort' ?
+	if (i < maxLaser) {		//	une case avec un laser
 		tabLasers[i].initLaser(coord.getPositionX() + milieu_vaisseau, coord.getPositionY(), -1);
 		tabLasersTimer[i].setDelai(DELAI_LASER);
 	}
 
-	if (i < maxLaser) {		//	une case avec un laser 'mort' ?
+	if (i < maxLaser) {		// deuxieme case pour avoir un laser plus long
 		tabLasers[i].initLaser(coord.getPositionX() + milieu_vaisseau, coord.getPositionY(), -1);
 		tabLasersTimer[i].setDelai(DELAI_LASER);
 	}
@@ -36,10 +36,10 @@ void MonVaisseau::gestionLaser(int debutLaser, int maxLaser, int milieu_vaisseau
 
 // Constructeur
 MonVaisseau::MonVaisseau() {
-	// Position initial du vaissau
+	// Position initial du vaisseau
 	coord.setPositionX(INIT_POS_X);
 	coord.setPositionY(INIT_POS_Y);
-	// affichage du vaissau
+	// affichage du vaisseau
 	leVaissau = "(^_^)";
 	putVaisseau();
 	//	initialisation des lasers
@@ -61,11 +61,11 @@ void MonVaisseau::tirerLaser() {
 	if (_kbhit()) {			//	une touche est prête ?
 		char touche = _getch();		//	on la prend du tampon
 
-		// Si le clavier de control est utilise
-		if (touche == 224)
-		{
-			touche = _getch();
-		}
+		//// Si le clavier de control est utilise
+		//if (touche == 224)
+		//{
+		//	touche = _getch();
+		//}
 
 		//	gestion vaisseau
 		modifierPosition(touche);

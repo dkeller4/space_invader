@@ -6,6 +6,7 @@ miniMartien::miniMartien() :Martien(0, 0)
 {
 	this->coord.setPositionX(0);
 	this->coord.setPositionY(0);
+	this->jiggle = true;
 }
 
 void miniMartien::setMiniMartien(int x, int y, int type) 
@@ -27,8 +28,14 @@ void miniMartien::dessinerExtraTerrestre()
 
 	// on dessine la premiere ligne 
 	UIKit::gotoXY(this->coord.getPositionX(), this->coord.getPositionY());
-	cout << (char)47;
-	cout << (char)92;
+	if (this->jiggle) {
+		cout << (char)47;
+		cout << (char)92;
+	}
+	else {
+		cout << (char)92;
+		cout << (char)47;
+	}
 
 	// on dessine la deuxieme ligne 
 	UIKit::gotoXY(this->coord.getPositionX() -1, this->coord.getPositionY()-1);
@@ -39,9 +46,7 @@ void miniMartien::dessinerExtraTerrestre()
 
 }
 
-
-void miniMartien::supprimerExtraterrestre()
-{
+void miniMartien::effacerExtraTerrestre() {
 	// On supprime la première ligne
 	UIKit::gotoXY(this->coord.getPositionX(), this->coord.getPositionY());
 	cout << "  ";
@@ -49,10 +54,16 @@ void miniMartien::supprimerExtraterrestre()
 	// on supprime la deuxieme ligne 
 	UIKit::gotoXY(this->coord.getPositionX() - 1, this->coord.getPositionY() - 1);
 	cout << "    ";
+}
+
+void miniMartien::supprimerExtraterrestre()
+{
+	this->effacerExtraTerrestre();
+
+	this->isAlive = false;
 
 	this->coord.setPositionX(0);
 	this->coord.setPositionY(0);
 
 }
-
 

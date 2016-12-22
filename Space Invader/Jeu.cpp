@@ -80,7 +80,7 @@ void Jeu::demarrerLeJeu() {
 
 	// pour faire apparaitre les miniMartiens
 	ligneExtraTerrestres(10, 8, 3);
-	ligneExtraTerrestres(15, 10, 4);
+	ligneExtraTerrestres(15, 5, 5);
 	
 	
 
@@ -90,8 +90,10 @@ void Jeu::demarrerLeJeu() {
 		sangomar.tirerLaser();
 
 		
-
+		// tester les collisions
 		testerLaCollision();
+
+		jiggle();
 
 		if (MortVaisseau)
 			gameOver = true;
@@ -106,6 +108,55 @@ void Jeu::demarrerLeJeu() {
 
 // Methodes public
 
+// faire bouger les aliens de la premiere ligne
+void Jeu::jiggle() {
+
+	if (delaiJiggle.tempsEcoule()) {
+
+		// pour la premiere ligne on les fait faire un mouvement droite-gauche
+		for (int i = 0; i < 8; i++) {
+
+			if (aliens[i].isAlive) {
+				aliens[i].effacerExtraTerrestre();
+
+				if (aliens[i].jiggle) {
+					aliens[i].coord.setPositionX(aliens[i].coord.getPositionX() - 1);
+				}
+				else {
+					aliens[i].coord.setPositionX(aliens[i].coord.getPositionX() + 1);
+				}
+				aliens[i].jiggle = !aliens[i].jiggle;
+
+				aliens[i].dessinerExtraTerrestre();
+			}
+		}
+		// pour la deuxieme ligne on les fait bouger jusqu'a la bordure de gauche et puis vice versa
+		for (int i = 8; i < _nb_aliens; i++) {
+
+			if (aliens[i].isAlive) {
+				aliens[i].effacerExtraTerrestre();
+
+				if (direction_gauche && aliens[i].coord.getPositionX() > 3) {
+					aliens[i].coord.setPositionX(aliens[i].coord.getPositionX() - 1);
+				}
+				else if (!direction_gauche && aliens[i].coord.getPositionX() < nbColonnesTerrain - 3) {
+					aliens[i].coord.setPositionX(aliens[i].coord.getPositionX() + 1);
+				}
+			aliens[i].dessinerExtraTerrestre();
+			}
+		}
+			// lorsqu'on arrive a une bordure on change de sens
+			if (aliens[8].coord.getPositionX() == 3 || aliens[_nb_aliens-1].coord.getPositionX() == nbColonnesTerrain - 3) {
+				direction_gauche = !direction_gauche;
+			}
+
+		}
+
+	// on reinitialize le delai
+	delaiJiggle.setDelai(1000);
+}
+
+
 //test de collision
 void Jeu::testerLaCollision()
 {
@@ -119,7 +170,8 @@ void Jeu::testerLaCollision()
 						sangomar.tabLasers[j].collision(aliens[i].coord.getPositionX() -1, aliens[i].coord.getPositionY()-1)
 					)
 				) {
-				aliens[i].supprimerExtraterrestre();
+				// supprimer l'alien
+				aliens[i].supprimerExtraterrestre(); 
 			}
 		}
 	}
