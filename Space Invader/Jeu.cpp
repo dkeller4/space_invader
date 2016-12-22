@@ -77,6 +77,9 @@ void Jeu::demarrerLeJeu() {
 
 	// pour faire apparaitre le vaisseau
 	sangomar.modifierPosition(75);
+	 
+	// creation du vaisseau aliens
+	MonVaisseau vaisseau_aliens(true);
 
 	// pour faire apparaitre les miniMartiens
 	ligneExtraTerrestres(10, 8, 3);
@@ -90,16 +93,21 @@ void Jeu::demarrerLeJeu() {
 		//	le vaisseau tire
 		sangomar.tirerLaser();
 
-		
-		// tester les collisions
+		// tirs des aliens
+		vaisseau_aliens.gestionLaserAliens(25, _nb_aliens, aliens);
+
+		// tester les collisions avec les aliens
 		testerLaCollision();
 
-		jiggle();
+		// mouvement des aliens
+		mouvement();
+
+
 
 		if (MortVaisseau)
 			gameOver = true;
 
-		//Sleep(100);
+		
 
 	} while (!gameOver);
 
@@ -107,10 +115,11 @@ void Jeu::demarrerLeJeu() {
 		GameOver();
 }
 
-// Methodes public
 
-// faire bouger les aliens de la premiere ligne
-void Jeu::jiggle() {
+
+
+// mouvement des aliens
+void Jeu::mouvement() {
 
 	if (delaiJiggle.tempsEcoule()) {
 
@@ -170,7 +179,7 @@ void Jeu::jiggle() {
 			}
 		}
 
-	// on reinitialize le delai
+	// on reinitialise le delai
 	delaiJiggle.setDelai(1000);
 }
 

@@ -24,6 +24,7 @@ private:
 	bool MortMiniMartienJaune;
 	bool MortMiniMartienRouge;
 	Timer delaiJiggle;
+	Timer delaiTir;
 	MonVaisseau sangomar;
 	miniMartien aliens[MAX_ALIENS];
 	bool direction_gauche = true;
@@ -34,7 +35,7 @@ private:
 public:
 	Jeu();
 	void demarrerLeJeu();
-	void jiggle();
+	void mouvement();
 	void testerLaCollision();
 	void affichageDuTerrain() const;
 	void GameOver();
@@ -43,3 +44,4 @@ public:
 	void affichageScore();
 	void ligneExtraTerrestres(int, int, int);
 };
+

@@ -4,6 +4,7 @@
 #include "Laser.h"
 #include "Timer.h"
 #include "DFLaser.h"
+#include "miniMartien.h"
 
 #include <string>
 using namespace std;
@@ -26,12 +27,15 @@ private:
 
 	void gestionLaser(int debutLaser, int maxLaser, int posXOffset);
 
+
 public:
 	DFLaser tabLasers[MAX_LASERS];
 	MonVaisseau();
 
-	DFLaser* getTabLasers();
+	MonVaisseau(bool alien);
 
+	DFLaser* getTabLasers();
+	Timer delaiTir;
 	void tirerLaser();
 	void tirerUnLaser();
 	int nombreDeLaser() const;
@@ -39,4 +43,5 @@ public:
 	void putVaisseau() const;
 	void modifierPosition(char key);
 	void removeVaisseau() const;
+	void gestionLaserAliens(int maxLaser, int nb_aliens, const miniMartien* aliens);
 };
