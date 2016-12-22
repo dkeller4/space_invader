@@ -6,6 +6,7 @@
 #include <iostream>
 #include "ExtraTerrestre.h"
 #include "miniMartien.h"
+#include "Interface.h"
 using namespace std;
 
 
@@ -46,15 +47,15 @@ void Jeu::affichageDuTerrain() const {
 
 	ecran.color(FOREGROUND_RED + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 16);
-	cout << "MiniMartiensR: " << "5 COINS";
+	cout << "MiniMartiensR: " << " COINS";
 
 	ecran.color(FOREGROUND_BLUE + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 18);
-	cout << "MiniMartiensB: " << "10 COINS";
+	cout << "MiniMartiensB: " << " COINS";
 
 	ecran.color(FOREGROUND_GREEN + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 20);
-	cout << "MiniMartiensG: " << "15 COINS";
+	cout << "MiniMartiensG: " << " COINS";
 
 
 	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
@@ -63,9 +64,26 @@ void Jeu::affichageDuTerrain() const {
 
 
 	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 12, 25);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 12, 24);
 	cout << score;
 
+	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 10, 26);
+	cout << "Vies:";
+
+
+	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 12, 28);
+	cout << sangomar.vies;
+
+	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 10, 30);
+	cout << "Aliens:";
+
+
+	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 12, 32);
+	cout << compteur_aliens;
 }
 
 void Jeu::demarrerLeJeu() {
@@ -77,10 +95,14 @@ void Jeu::demarrerLeJeu() {
 
 	// pour faire apparaitre le vaisseau
 	sangomar.modifierPosition(75);
+	 
+	// creation du vaisseau aliens
+	vaisseau_aliens.setvaisseauAlien();
 
 	// pour faire apparaitre les miniMartiens
 	ligneExtraTerrestres(10, 8, 3);
 	ligneExtraTerrestres(15, 5, 5);
+	ligneExtraTerrestres(20, 6, 6);
 	
 	
 
@@ -89,31 +111,55 @@ void Jeu::demarrerLeJeu() {
 		//	le vaisseau tire
 		sangomar.tirerLaser();
 
-		
-		// tester les collisions
+		// tirs des aliens
+		vaisseau_aliens.gestionLaserAliens(25, _nb_aliens, aliens);
+
+		// tester les tirs du vaisseau
 		testerLaCollision();
-	
-		jiggle();
+
+		// tester les tirs des aliens
+		testerCollisionsAliens();
+
+		// mouvement des aliens
+		mouvement();
+
+		// mise a jour du nombre de vies
+		ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
+		ecran.gotoXY(nbColonnesTerrain + 1 + 12, 28);
+		cout << sangomar.vies;
+
+		// mise a jour du nombre d'aliens (effacer puis reecriture)
+			if (compteur_aliens == 9) {
+				ecran.gotoXY(nbColonnesTerrain + 1 + 12, 32);
+				cout << "  ";
+			}
+			ecran.gotoXY(nbColonnesTerrain + 1 + 12, 32);
+			cout << compteur_aliens;
+
+		if (sangomar.vies == 0) MortVaisseau = true;
+
+		if (compteur_aliens == 0) gameOver = true; 
 
 		if (MortVaisseau)
 			gameOver = true;
-
-		//Sleep(100);
 
 	} while (!gameOver);
 
 	if (MortVaisseau)
 		GameOver();
+	else Victoire();
+
 }
 
-// Methodes public
 
-// faire bouger les aliens de la premiere ligne
-void Jeu::jiggle() {
+
+
+// mouvement des aliens
+void Jeu::mouvement() {
 
 	if (delaiJiggle.tempsEcoule()) {
 
-		// pour la premiere ligne on les fait faire un mouvement droite-gauche
+		// premiere ligne -> mouvement droite-gauche
 		for (int i = 0; i < 8; i++) {
 
 			if (aliens[i].isAlive) {
@@ -130,8 +176,8 @@ void Jeu::jiggle() {
 				aliens[i].dessinerExtraTerrestre();
 			}
 		}
-		// pour la deuxieme ligne on les fait bouger jusqu'a la bordure de gauche et puis vice versa
-		for (int i = 8; i < _nb_aliens; i++) {
+		// deuxieme ligne -> bouger jusqu'a la bordure de gauche et puis vice versa
+		for (int i = 8; i < 13; i++) {
 
 			if (aliens[i].isAlive) {
 				aliens[i].effacerExtraTerrestre();
@@ -146,19 +192,35 @@ void Jeu::jiggle() {
 			aliens[i].dessinerExtraTerrestre();
 			}
 		}
-			// lorsqu'on arrive a une bordure on change de sens
-			if (aliens[8].coord.getPositionX() == 3 || aliens[_nb_aliens-1].coord.getPositionX() == nbColonnesTerrain - 3) {
+			// troisieme ligne -> mouvement droite-gauche
+			if (aliens[8].coord.getPositionX() == 3 || aliens[12].coord.getPositionX() == nbColonnesTerrain - 3) {
 				direction_gauche = !direction_gauche;
 			}
 
+			for (int i = 13; i < _nb_aliens; i++) {
+
+				if (aliens[i].isAlive) {
+					aliens[i].effacerExtraTerrestre();
+
+					if (aliens[i].jiggle) {
+						aliens[i].coord.setPositionX(aliens[i].coord.getPositionX() - 1);
+					}
+					else {
+						aliens[i].coord.setPositionX(aliens[i].coord.getPositionX() + 1);
+					}
+					aliens[i].jiggle = !aliens[i].jiggle;
+
+					aliens[i].dessinerExtraTerrestre();
+				}
+			}
 		}
 
-	// on reinitialize le delai
+	// on reinitialise le delai
 	delaiJiggle.setDelai(1000);
 }
 
 
-//test de collision
+//tester les tirs du vaisseau
 void Jeu::testerLaCollision()
 {
 	for (int i = 0; i < _nb_aliens; i++) {
@@ -172,16 +234,29 @@ void Jeu::testerLaCollision()
 					)
 				) {
 				// supprimer l'alien
-				aliens[i].supprimerExtraterrestre();
-				//incrementation du score
-				score += aliens[i].getValeurAllien();
-				
-
+				aliens[i].supprimerExtraterrestre(); 
+				compteur_aliens = compteur_aliens- 1;
 			}
 		}
 	}
 
 }
+
+// tester les tirs des aliens
+void Jeu::testerCollisionsAliens() {
+
+	if (delairTirsAliens.tempsEcoule()){
+
+		for (int j = 0; j < MAX_LASERS; j++) {
+			if (sangomar.collision(vaisseau_aliens.tabLasers[j].coord.getPositionX(), vaisseau_aliens.tabLasers[j].coord.getPositionY())) {
+				sangomar.vies -= 1;
+				sangomar.putVaisseau(true);
+			}
+		}
+	}
+	delairTirsAliens.setDelai(50);
+}
+
 
 void Jeu::GameOver() {
 	//	effet d'effacement
@@ -192,7 +267,7 @@ void Jeu::GameOver() {
 	UIKit::gotoXY(0, 25);
 	for (int i = 0; i < 50; i++) {
 		cout << endl;
-		Sleep(70);
+		Sleep(40);
 	}
 }
 
@@ -205,7 +280,7 @@ void Jeu::Victoire() {
 	UIKit::gotoXY(0, 25);
 	for (int i = 0; i < 50; i++) {
 		cout << endl;
-		Sleep(70);
+		Sleep(40);
 	}
 }
 

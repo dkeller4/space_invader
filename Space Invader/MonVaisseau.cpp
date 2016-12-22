@@ -34,17 +34,59 @@ void MonVaisseau::gestionLaser(int debutLaser, int maxLaser, int milieu_vaisseau
 	}
 }
 
-// Constructeur
+void MonVaisseau::gestionLaserAliens(int maxLaser, int nb_aliens, const miniMartien* aliens) {
+	int i = 0;
+
+	if (delaiTir.tempsEcoule()) {
+		
+		
+		for (int j = 0; j < nb_aliens ; j++) {
+			if (aliens[j].isAlive) {
+
+				// on recherche l'indice du nouveau laser
+				while (i < maxLaser && tabLasers[i].isAlive == true)	i++;
+
+				if (i < maxLaser) {		//	une case avec un laser
+					tabLasers[j].initLaser(aliens[j].coord.getPositionX(), aliens[j].coord.getPositionY(), 1);
+					tabLasersTimer[j].setDelai(DELAI_LASER);
+				}
+
+				if (i < maxLaser) {		// deuxieme case pour avoir un laser plus long
+					tabLasers[i].initLaser(aliens[j].coord.getPositionX(), aliens[j].coord.getPositionY(), 1);
+					tabLasersTimer[i].setDelai(DELAI_LASER);
+				}
+
+			}
+		}
+
+	}
+	
+	// gestion des lasers
+		for (int i = 0; i < MAX_LASERS; i++) {
+			if (tabLasers[i].isAlive && tabLasersTimer[i].tempsEcoule())
+				tabLasers[i].moveLaser(1);
+		}
+		// on reinitialise le delai
+		delaiTir.setDelai(5000);
+}
+
+
+	// Constructeur
 MonVaisseau::MonVaisseau() {
 	// Position initial du vaisseau
 	coord.setPositionX(INIT_POS_X);
 	coord.setPositionY(INIT_POS_Y);
 	// affichage du vaisseau
 	leVaissau = "(^_^)";
-	putVaisseau();
+	putVaisseau(false);
 	//	initialisation des lasers
 	for (int i = 0; i < MAX_LASERS; i++)
 		tabLasers[i].isAlive = false;
+}
+
+void MonVaisseau::setvaisseauAlien(){
+	coord.setPositionX(100);
+	coord.setPositionY(100);
 }
 
 DFLaser* MonVaisseau::getTabLasers() {
@@ -106,9 +148,15 @@ int MonVaisseau::nombreDeLaser() const {
 	return cpt;
 }
 
-void MonVaisseau::putVaisseau() const
+void MonVaisseau::putVaisseau(bool touche) const
 {
+	if (touche) {
+		UIKit::color(FOREGROUND_RED + FOREGROUND_INTENSITY);
+	}
+	else {
 	UIKit::color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
+	}
+
 	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
 	cout << leVaissau;
 }
@@ -128,7 +176,7 @@ void MonVaisseau::modifierPosition(char key)
 		if (coord.getPositionX() < BORDURE_POS_X_DROITE)
 			coord.setPositionX(coord.getPositionX() + 1);
 	}
-	putVaisseau();
+	putVaisseau(false);
 }
 
 void MonVaisseau::removeVaisseau() const

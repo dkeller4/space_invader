@@ -75,8 +75,8 @@ void miniMartien::supprimerExtraterrestre()
 
 	this->isAlive = false;
 
-	this->coord.setPositionX(0);
-	this->coord.setPositionY(0);
+	this->coord.setPositionX(100);
+	this->coord.setPositionY(100);
 
 }
 

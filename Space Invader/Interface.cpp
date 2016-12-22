@@ -2,7 +2,9 @@
 #include "UIKit.h"
 #include "Menu.h"
 #include "Jeu.h"
+#include <iostream>
 
+using namespace std;
 
 void play() {
 	UIKit ecran;
@@ -34,7 +36,8 @@ void play() {
 				            << "Click est un jeu  flash classé dans la catégorie des jeux des combats."
 				            << "Découvre ce jeu et plein d’autres jeux flash du genre ou de catégories "
 				            << "différents si tu visites notre site web de jeux flash gratuits en ligne." << endl;
-
+							Sleep(1000);
+							cin.ignore(512, '\n');
 			               if (_kbhit()) {			
 				                           char touche = _getch();		
                                             if (touche)

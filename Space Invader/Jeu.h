@@ -24,18 +24,23 @@ private:
 	bool MortMiniMartienJaune;
 	bool MortMiniMartienRouge;
 	Timer delaiJiggle;
+	Timer delaiTir;
+	Timer delairTirsAliens;
 	MonVaisseau sangomar;
+	MonVaisseau vaisseau_aliens;
 	miniMartien aliens[MAX_ALIENS];
 	bool direction_gauche = true;
 	int _nb_aliens = 0;
+	int compteur_aliens = 19;
 	UIKit ecran;
 	void debut();
 
 public:
 	Jeu();
 	void demarrerLeJeu();
-	void jiggle();
+	void mouvement();
 	void testerLaCollision();
+	void testerCollisionsAliens();
 	void affichageDuTerrain() const;
 	void GameOver();
 	void reinitialiserLejeu();
@@ -43,3 +48,4 @@ public:
 	void affichageScore();
 	void ligneExtraTerrestres(int, int, int);
 };
+
