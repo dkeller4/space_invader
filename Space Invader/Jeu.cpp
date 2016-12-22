@@ -142,7 +142,7 @@ void Jeu::jiggle() {
 				else if (!direction_gauche && aliens[i].coord.getPositionX() < nbColonnesTerrain - 3) {
 					aliens[i].coord.setPositionX(aliens[i].coord.getPositionX() + 1);
 				}
-				aliens[i].jiggle = !aliens[i].jiggle;
+				// aliens[i].jiggle = !aliens[i].jiggle;
 			aliens[i].dessinerExtraTerrestre();
 			}
 		}
