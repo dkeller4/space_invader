@@ -129,14 +129,12 @@ void Jeu::demarrerLeJeu() {
 		cout << sangomar.vies;
 
 		// mise a jour du nombre d'aliens (effacer puis reecriture)
-		if(delaiTir.tempsEcoule()) {
 			if (compteur_aliens == 9) {
 				ecran.gotoXY(nbColonnesTerrain + 1 + 12, 32);
 				cout << "  ";
 			}
 			ecran.gotoXY(nbColonnesTerrain + 1 + 12, 32);
 			cout << compteur_aliens;
-		}
 
 		if (sangomar.vies == 0) MortVaisseau = true;
 
