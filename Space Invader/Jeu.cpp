@@ -46,15 +46,15 @@ void Jeu::affichageDuTerrain() const {
 
 	ecran.color(FOREGROUND_RED + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 16);
-	cout << "MiniMartiensR: " << " COINS";
+	cout << "MiniMartiensR: " << "5 COINS";
 
 	ecran.color(FOREGROUND_BLUE + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 18);
-	cout << "MiniMartiensB: " << " COINS";
+	cout << "MiniMartiensB: " << "10 COINS";
 
 	ecran.color(FOREGROUND_GREEN + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 20);
-	cout << "MiniMartiensG: " << " COINS";
+	cout << "MiniMartiensG: " << "15 COINS";
 
 
 	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
@@ -92,7 +92,7 @@ void Jeu::demarrerLeJeu() {
 		
 		// tester les collisions
 		testerLaCollision();
-
+	
 		jiggle();
 
 		if (MortVaisseau)
@@ -172,7 +172,11 @@ void Jeu::testerLaCollision()
 					)
 				) {
 				// supprimer l'alien
-				aliens[i].supprimerExtraterrestre(); 
+				aliens[i].supprimerExtraterrestre();
+				//incrementation du score
+				score += aliens[i].getValeurAllien();
+				
+
 			}
 		}
 	}

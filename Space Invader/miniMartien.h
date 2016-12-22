@@ -19,4 +19,5 @@ public:
 	void effacerExtraTerrestre();
 
 	void supprimerExtraterrestre();
+	int getValeurAllien() const;
 };

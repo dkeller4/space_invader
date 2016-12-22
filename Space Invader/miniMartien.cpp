@@ -46,6 +46,19 @@ void miniMartien::dessinerExtraTerrestre()
 
 }
 
+//Pour avoir le score pour chaque type de martien
+int miniMartien::getValeurAllien() const {
+	int valeur;
+	if (this->typeExtraTerrestre == 1)
+		valeur = 5;
+
+	else if (this->typeExtraTerrestre == 2)
+		valeur = 10;
+	else
+		valeur = 15;
+	return valeur;
+}
+
 void miniMartien::effacerExtraTerrestre() {
 	// On supprime la première ligne
 	UIKit::gotoXY(this->coord.getPositionX(), this->coord.getPositionY());
