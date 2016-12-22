@@ -100,7 +100,7 @@ void Jeu::demarrerLeJeu() {
 		testerLaCollision();
 
 		// tester les tirs des aliens
-		testerCollisionsAliens();
+		// testerCollisionsAliens();
 
 		// mouvement des aliens
 		mouvement();

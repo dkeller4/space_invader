@@ -38,39 +38,36 @@ void MonVaisseau::gestionLaserAliens(int maxLaser, int nb_aliens, const miniMart
 	int i = 0;
 
 	if (delaiTir.tempsEcoule()) {
+		
+		
+		for (int j = 0; j < nb_aliens ; j++) {
+			if (aliens[j].isAlive) {
 
-		// on recherche l'indice du nouveau laser
-		while (i < maxLaser && tabLasers[i].isAlive == true)
-			i++;
+				// on recherche l'indice du nouveau laser
+				while (i < maxLaser && tabLasers[i].isAlive == true)	i++;
 
-		for (int j = 0; j < nb_aliens; j++) {
+				if (i < maxLaser) {		//	une case avec un laser
+					tabLasers[j].initLaser(aliens[j].coord.getPositionX(), aliens[j].coord.getPositionY(), 1);
+					tabLasersTimer[j].setDelai(DELAI_LASER);
+				}
 
-			if (i < maxLaser) {		//	une case avec un laser
-				tabLasers[j].initLaser(aliens[j].coord.getPositionX(), aliens[j].coord.getPositionY(), 1);
-				tabLasersTimer[j].setDelai(DELAI_LASER);
+				if (i < maxLaser) {		// deuxieme case pour avoir un laser plus long
+					tabLasers[i].initLaser(aliens[j].coord.getPositionX(), aliens[j].coord.getPositionY(), 1);
+					tabLasersTimer[i].setDelai(DELAI_LASER);
+				}
+
 			}
-
-			if (i < maxLaser) {		// deuxieme case pour avoir un laser plus long
-				tabLasers[i].initLaser(aliens[j].coord.getPositionX(), aliens[j].coord.getPositionY(), 1);
-				tabLasersTimer[i].setDelai(DELAI_LASER);
-			}
-
-			// on incremente l'indice du laser
-			i++;
 		}
 
 	}
-	// on reinitialise le delai
-	delaiTir.setDelai(5000);
-
-
+	
 	// gestion des lasers
 		for (int i = 0; i < MAX_LASERS; i++) {
 			if (tabLasers[i].isAlive && tabLasersTimer[i].tempsEcoule())
 				tabLasers[i].moveLaser(1);
 		}
-
-
+		// on reinitialise le delai
+		delaiTir.setDelai(5000);
 }
 
 
