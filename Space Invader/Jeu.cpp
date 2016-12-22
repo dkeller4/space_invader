@@ -81,6 +81,7 @@ void Jeu::demarrerLeJeu() {
 	// pour faire apparaitre les miniMartiens
 	ligneExtraTerrestres(10, 8, 3);
 	ligneExtraTerrestres(15, 5, 5);
+	ligneExtraTerrestres(20, 6, 6);
 	
 	
 
@@ -113,7 +114,7 @@ void Jeu::jiggle() {
 
 	if (delaiJiggle.tempsEcoule()) {
 
-		// pour la premiere ligne on les fait faire un mouvement droite-gauche
+		// premiere ligne -> mouvement droite-gauche
 		for (int i = 0; i < 8; i++) {
 
 			if (aliens[i].isAlive) {
@@ -130,8 +131,8 @@ void Jeu::jiggle() {
 				aliens[i].dessinerExtraTerrestre();
 			}
 		}
-		// pour la deuxieme ligne on les fait bouger jusqu'a la bordure de gauche et puis vice versa
-		for (int i = 8; i < _nb_aliens; i++) {
+		// deuxieme ligne -> bouger jusqu'a la bordure de gauche et puis vice versa
+		for (int i = 8; i < 13; i++) {
 
 			if (aliens[i].isAlive) {
 				aliens[i].effacerExtraTerrestre();
@@ -146,11 +147,27 @@ void Jeu::jiggle() {
 			aliens[i].dessinerExtraTerrestre();
 			}
 		}
-			// lorsqu'on arrive a une bordure on change de sens
-			if (aliens[8].coord.getPositionX() == 3 || aliens[_nb_aliens-1].coord.getPositionX() == nbColonnesTerrain - 3) {
+			// troisieme ligne -> mouvement droite-gauche
+			if (aliens[8].coord.getPositionX() == 3 || aliens[12].coord.getPositionX() == nbColonnesTerrain - 3) {
 				direction_gauche = !direction_gauche;
 			}
 
+			for (int i = 13; i < _nb_aliens; i++) {
+
+				if (aliens[i].isAlive) {
+					aliens[i].effacerExtraTerrestre();
+
+					if (aliens[i].jiggle) {
+						aliens[i].coord.setPositionX(aliens[i].coord.getPositionX() - 1);
+					}
+					else {
+						aliens[i].coord.setPositionX(aliens[i].coord.getPositionX() + 1);
+					}
+					aliens[i].jiggle = !aliens[i].jiggle;
+
+					aliens[i].dessinerExtraTerrestre();
+				}
+			}
 		}
 
 	// on reinitialize le delai
