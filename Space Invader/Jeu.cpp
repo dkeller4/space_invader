@@ -6,6 +6,7 @@
 #include <iostream>
 #include "ExtraTerrestre.h"
 #include "miniMartien.h"
+#include "Interface.h"
 using namespace std;
 
 
@@ -63,9 +64,26 @@ void Jeu::affichageDuTerrain() const {
 
 
 	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
-	ecran.gotoXY(nbColonnesTerrain + 1 + 12, 25);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 12, 24);
 	cout << score;
 
+	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 10, 26);
+	cout << "Vies:";
+
+
+	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 12, 28);
+	cout << sangomar.vies;
+
+	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 10, 30);
+	cout << "Aliens:";
+
+
+	ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
+	ecran.gotoXY(nbColonnesTerrain + 1 + 12, 32);
+	cout << compteur_aliens;
 }
 
 void Jeu::demarrerLeJeu() {
@@ -100,22 +118,39 @@ void Jeu::demarrerLeJeu() {
 		testerLaCollision();
 
 		// tester les tirs des aliens
-		// testerCollisionsAliens();
+		testerCollisionsAliens();
 
 		// mouvement des aliens
 		mouvement();
 
+		// mise a jour du nombre de vies
+		ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
+		ecran.gotoXY(nbColonnesTerrain + 1 + 12, 28);
+		cout << sangomar.vies;
 
+		// mise a jour du nombre d'aliens (effacer puis reecriture)
+		if(delaiTir.tempsEcoule()) {
+			if (compteur_aliens == 9) {
+				ecran.gotoXY(nbColonnesTerrain + 1 + 12, 32);
+				cout << "  ";
+			}
+			ecran.gotoXY(nbColonnesTerrain + 1 + 12, 32);
+			cout << compteur_aliens;
+		}
+
+		if (sangomar.vies == 0) MortVaisseau = true;
+
+		if (compteur_aliens == 0) gameOver = true; 
 
 		if (MortVaisseau)
 			gameOver = true;
-
-		
 
 	} while (!gameOver);
 
 	if (MortVaisseau)
 		GameOver();
+	else Victoire();
+
 }
 
 
@@ -202,6 +237,7 @@ void Jeu::testerLaCollision()
 				) {
 				// supprimer l'alien
 				aliens[i].supprimerExtraterrestre(); 
+				compteur_aliens = compteur_aliens- 1;
 			}
 		}
 	}
@@ -210,13 +246,17 @@ void Jeu::testerLaCollision()
 
 // tester les tirs des aliens
 void Jeu::testerCollisionsAliens() {
-	for (int j = 0; j < MAX_LASERS; j++) {
-		if (sangomar.collision(vaisseau_aliens.tabLasers[j].coord.getPositionX(), vaisseau_aliens.tabLasers[j].coord.getPositionY())) {
-			sangomar.vies -= 1;
-		
+
+	if (delairTirsAliens.tempsEcoule()){
+
+		for (int j = 0; j < MAX_LASERS; j++) {
+			if (sangomar.collision(vaisseau_aliens.tabLasers[j].coord.getPositionX(), vaisseau_aliens.tabLasers[j].coord.getPositionY())) {
+				sangomar.vies -= 1;
+				sangomar.putVaisseau(true);
+			}
 		}
 	}
-
+	delairTirsAliens.setDelai(50);
 }
 
 
@@ -229,7 +269,7 @@ void Jeu::GameOver() {
 	UIKit::gotoXY(0, 25);
 	for (int i = 0; i < 50; i++) {
 		cout << endl;
-		Sleep(70);
+		Sleep(40);
 	}
 }
 
@@ -242,7 +282,7 @@ void Jeu::Victoire() {
 	UIKit::gotoXY(0, 25);
 	for (int i = 0; i < 50; i++) {
 		cout << endl;
-		Sleep(70);
+		Sleep(40);
 	}
 }
 

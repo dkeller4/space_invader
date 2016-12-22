@@ -41,7 +41,7 @@ public:
 	void tirerUnLaser();
 	int nombreDeLaser() const;
 	bool collision(int posX, int posY);
-	void putVaisseau() const;
+	void putVaisseau(bool touche) const;
 	void modifierPosition(char key);
 	void removeVaisseau() const;
 	void gestionLaserAliens(int maxLaser, int nb_aliens, const miniMartien* aliens);

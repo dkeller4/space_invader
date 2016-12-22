@@ -78,7 +78,7 @@ MonVaisseau::MonVaisseau() {
 	coord.setPositionY(INIT_POS_Y);
 	// affichage du vaisseau
 	leVaissau = "(^_^)";
-	putVaisseau();
+	putVaisseau(false);
 	//	initialisation des lasers
 	for (int i = 0; i < MAX_LASERS; i++)
 		tabLasers[i].isAlive = false;
@@ -148,9 +148,15 @@ int MonVaisseau::nombreDeLaser() const {
 	return cpt;
 }
 
-void MonVaisseau::putVaisseau() const
+void MonVaisseau::putVaisseau(bool touche) const
 {
+	if (touche) {
+		UIKit::color(FOREGROUND_RED + FOREGROUND_INTENSITY);
+	}
+	else {
 	UIKit::color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
+	}
+
 	coord.gotoXY(coord.getPositionX(), coord.getPositionY());
 	cout << leVaissau;
 }
@@ -170,7 +176,7 @@ void MonVaisseau::modifierPosition(char key)
 		if (coord.getPositionX() < BORDURE_POS_X_DROITE)
 			coord.setPositionX(coord.getPositionX() + 1);
 	}
-	putVaisseau();
+	putVaisseau(false);
 }
 
 void MonVaisseau::removeVaisseau() const
