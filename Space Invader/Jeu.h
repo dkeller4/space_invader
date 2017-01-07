@@ -26,6 +26,7 @@ private:
 	Timer delaiJiggle;
 	Timer delaiTir;
 	Timer delairTirsAliens;
+	Timer delaiVaisseauVies;
 	MonVaisseau sangomar;
 	MonVaisseau vaisseau_aliens;
 	miniMartien aliens[MAX_ALIENS];

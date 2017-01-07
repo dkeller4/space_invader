@@ -152,8 +152,6 @@ void Jeu::demarrerLeJeu() {
 }
 
 
-
-
 // mouvement des aliens
 void Jeu::mouvement() {
 
@@ -163,6 +161,7 @@ void Jeu::mouvement() {
 		for (int i = 0; i < 8; i++) {
 
 			if (aliens[i].isAlive) {
+
 				aliens[i].effacerExtraTerrestre();
 
 				if (aliens[i].jiggle) {
@@ -172,7 +171,6 @@ void Jeu::mouvement() {
 					aliens[i].coord.setPositionX(aliens[i].coord.getPositionX() + 1);
 				}
 				aliens[i].jiggle = !aliens[i].jiggle;
-
 				aliens[i].dessinerExtraTerrestre();
 			}
 		}
@@ -225,7 +223,7 @@ void Jeu::testerLaCollision()
 {
 	for (int i = 0; i < _nb_aliens; i++) {
 		for (int j = 0; j < MAX_LASERS; j++) {
-			if (sangomar.tabLasers[j].isAlive &&
+			if (sangomar.tabLasers[j].isAlive&& 
 				// Tester les collisions avec les quatres coins des aliens
 					(		sangomar.tabLasers[j].collision(aliens[i].coord.getPositionX(), aliens[i].coord.getPositionY() ) || 
 						sangomar.tabLasers[j].collision(aliens[i].coord.getPositionX()+1, aliens[i].coord.getPositionY() ) ||
@@ -239,13 +237,12 @@ void Jeu::testerLaCollision()
 			}
 		}
 	}
-
 }
 
 // tester les tirs des aliens
 void Jeu::testerCollisionsAliens() {
 
-	if (delairTirsAliens.tempsEcoule()){
+	if (delaiVaisseauVies.tempsEcoule()){
 
 		for (int j = 0; j < MAX_LASERS; j++) {
 			if (sangomar.collision(vaisseau_aliens.tabLasers[j].coord.getPositionX(), vaisseau_aliens.tabLasers[j].coord.getPositionY())) {
@@ -254,7 +251,7 @@ void Jeu::testerCollisionsAliens() {
 			}
 		}
 	}
-	delairTirsAliens.setDelai(50);
+	delaiVaisseauVies.setDelai(100);
 }
 
 
