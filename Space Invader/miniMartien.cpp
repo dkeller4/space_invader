@@ -46,8 +46,12 @@ void miniMartien::dessinerExtraTerrestre()
 
 }
 
-//Pour avoir le score pour chaque type de martien
-int miniMartien::getValeurAllien() const {
+int  miniMartien::getTypeAlien() const {
+	return this->typeExtraTerrestre;
+}
+
+////Pour avoir le score pour chaque type de martien
+int miniMartien::getValeurAlien() const {
 	int valeur;
 	if (this->typeExtraTerrestre == 1)
 		valeur = 5;

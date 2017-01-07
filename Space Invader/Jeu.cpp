@@ -47,15 +47,15 @@ void Jeu::affichageDuTerrain() const {
 
 	ecran.color(FOREGROUND_RED + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 16);
-	cout << "MiniMartiensR: " << " COINS";
+	cout << "MiniMartiensR: " << "5 COINS";
 
 	ecran.color(FOREGROUND_BLUE + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 18);
-	cout << "MiniMartiensB: " << " COINS";
+	cout << "MiniMartiensB: " << "10 COINS";
 
 	ecran.color(FOREGROUND_GREEN + FOREGROUND_INTENSITY);
 	ecran.gotoXY(nbColonnesTerrain + 1 + 3, 20);
-	cout << "MiniMartiensG: " << " COINS";
+	cout << "MiniMartiensG: " << "15 COINS";
 
 
 	ecran.color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
@@ -123,10 +123,16 @@ void Jeu::demarrerLeJeu() {
 		// mouvement des aliens
 		mouvement();
 
+		
+		// mise a jour du score
+		ecran.gotoXY(nbColonnesTerrain + 1 + 12, 24);
+		cout << score;
+
 		// mise a jour du nombre de vies
 		ecran.color(FOREGROUND_YELLOW + FOREGROUND_INTENSITY);
 		ecran.gotoXY(nbColonnesTerrain + 1 + 12, 28);
 		cout << sangomar.vies;
+
 
 		// mise a jour du nombre d'aliens (effacer puis reecriture)
 			if (compteur_aliens == 9) {
@@ -231,6 +237,9 @@ void Jeu::testerLaCollision()
 						sangomar.tabLasers[j].collision(aliens[i].coord.getPositionX() -1, aliens[i].coord.getPositionY()-1)
 					)
 				) {
+
+				// icrementation du score
+				score += aliens[i].getValeurAlien();
 				// supprimer l'alien
 				aliens[i].supprimerExtraterrestre(); 
 				compteur_aliens = compteur_aliens- 1;

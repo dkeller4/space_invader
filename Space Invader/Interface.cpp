@@ -9,12 +9,12 @@ using namespace std;
 void play() {
 	UIKit ecran;
 
-	// Selection du choix du menu
+	// choix d'une action du menu
 	int choix;
 
-	// Affiche le menu du jeu
+	// Affichage du menu du jeu
 	string listeChoix[] = { "Demarrer une partie","Aide", "Quitter le jeu" };
-	Menu Menu("CHOISISSEZ UNE ACTION.....(^_^)", listeChoix, 3, 8, 30);
+	Menu Menu("(^SANGOMAR^) contre les <MINIMARTIENS>      ", listeChoix, 3, 8, 30);
 
 	do {
 		Jeu space;
@@ -24,7 +24,7 @@ void play() {
 		// Cache le curseur
 		ecran.curseurVisible(false);
 
-		UIKit::color(FOREGROUND_CYAN + FOREGROUND_INTENSITY);
+		UIKit::color(FOREGROUND_RED + FOREGROUND_INTENSITY);
 		choix = Menu.afficherMenu();
 
 		if (choix == 1) space.demarrerLeJeu();
